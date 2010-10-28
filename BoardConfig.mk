@@ -63,7 +63,7 @@ BT_ALT_STACK := true
 BRCM_BTL_INCLUDE_A2DP := true
 BRCM_BT_USE_BTL_IF := true
 
-BOARD_EGL_CFG := device/samsung/galaxys/system/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/samsung/galaxys/prebuilt/lib/egl/egl.cfg
 
 # Device related defines
 
