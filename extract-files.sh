@@ -303,7 +303,6 @@ lib/libsmp3domxoc.so
 lib/libsmp4fmocn.so
 lib/libsmp4vdomxoc.so
 lib/libsmp4veomxoc.so
-lib/libspeech.so
 lib/libsvc1domxoc.so
 lib/libswmadomxoc.so
 lib/libswmv7domxoc.so
@@ -360,7 +359,6 @@ PRODUCT_COPY_FILES := \\
 # Audio
 #
 PRODUCT_COPY_FILES += \\
-    vendor/samsung/__DEVICE__/proprietary/lib/libspeech.so:system/lib/libspeech.so \\
     vendor/samsung/__DEVICE__/proprietary/etc/asound.conf:system/etc/asound.conf
 
 #
