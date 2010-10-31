@@ -26,7 +26,7 @@
 USE_CAMERA_STUB := true
 
 # inherit from the proprietary version
--include vendor/samsung/galaxys/BoardConfigVendor.mk
+-include vendor/samsung/GT-I9000/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 #TARGET_NO_RECOVERY := true

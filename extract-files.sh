@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DEVICE=galaxys
+DEVICE=GT-I9000
 
 mkdir -p ../../../vendor/samsung/$DEVICE/proprietary
 
