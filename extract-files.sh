@@ -268,7 +268,7 @@ etc/wifi/wpa_supplicant.conf
 lib/libwpa_client.so
 lib/libwlandut.so
 lib/libwlservice.so
-bin/BCM4329B1_002.002.023.0417.0435.hcd
+bin/BCM4329B1_002.002.023.0417.0430.hcd
 bin/wlservice
 bin/wpa_supplicant
 
@@ -395,7 +395,7 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/bin/wpa_supplicant:system/bin/wpa_supplicant \\
     vendor/samsung/__DEVICE__/proprietary/bin/wlservice:system/bin/wlservice \\
     vendor/samsung/__DEVICE__/proprietary/bin/btld:system/bin/btld \\
-    vendor/samsung/__DEVICE__/proprietary/bin/BCM4329B1_002.002.023.0417.0435.hcd:system/bin/BCM4329B1_002.002.023.0417.0435.hcd
+    vendor/samsung/__DEVICE__/proprietary/bin/BCM4329B1_002.002.023.0417.0430.hcd:system/bin/BCM4329B1_002.002.023.0417.0430.hcd
 
 #
 # DHCPCD
