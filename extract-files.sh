@@ -248,12 +248,6 @@ done
 FILES="
 bin/drexe
 bin/btld
-bin/dhcpcd
-bin/rild
-bin/rilclient-test
-bin/tvoutserver
-bin/wlservice
-bin/wpa_supplicant
 
 etc/asound.conf
 
@@ -262,6 +256,7 @@ etc/dhcpcd/dhcpcd.conf
 etc/dhcpcd/dhcpcd-hooks/01-test
 etc/dhcpcd/dhcpcd-hooks/20-dns.conf
 etc/dhcpcd/dhcpcd-hooks/95-configured
+bin/dhcpcd
 
 etc/wifi/nvram_net.txt
 etc/wifi/nvram_mfg.txt
@@ -270,6 +265,11 @@ etc/wifi/bcm4329_mfg.bin
 etc/wifi/bcm4329_sta.bin
 etc/wifi/wifi.conf
 etc/wifi/wpa_supplicant.conf
+lib/libwpa_client.so
+lib/libwlandut.so
+lib/libwlservice.so
+bin/wlservice
+bin/wpa_supplicant
 
 lib/libcamera_client.so
 lib/libcamerafirmwarejniforuna.so
@@ -277,10 +277,19 @@ lib/libcameraservice.so
 lib/libarccamera.so
 lib/libcamera.so
 lib/libcamerafirmwarejni.so
+lib/libseccamera.so
+lib/libseccameraadaptor.so
+
 lib/libgps.so
+lib/libsecgps.so
+
 lib/libreference-ril.so
 lib/libril.so
 lib/libsec-ril.so
+lib/libsecril-client.so
+bin/rild
+bin/rilclient-test
+
 lib/libomx_sharedlibrary.so
 lib/libstagefright_omx.so
 lib/libs263domxoc.so
@@ -294,10 +303,6 @@ lib/libsac3domxoc.so
 lib/libsamrdomxoc.so
 lib/libsamreomxoc.so
 lib/libsdiv3domxoc.so
-lib/libseccamera.so
-lib/libseccameraadaptor.so
-lib/libsecgps.so
-lib/libsecril-client.so
 lib/libsflacdomxoc.so
 lib/libsmp3domxoc.so
 lib/libsmp4fmocn.so
@@ -307,25 +312,36 @@ lib/libsvc1domxoc.so
 lib/libswmadomxoc.so
 lib/libswmv7domxoc.so
 lib/libswmv8domxoc.so
+
+bin/tvoutserver
 lib/lib_tvoutengine.so
 lib/libtvout.so
 lib/libtvout_jni.so
 lib/libtvoutfimc.so
 lib/libtvouthdmi.so
 lib/libtvoutservice.so
-lib/libwlandut.so
-lib/libwlservice.so
 
 lib/egl/libEGL_POWERVR_SGX540_120.so
 lib/egl/libGLES_android.so
 lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so
 lib/egl/libGLESv2_POWERVR_SGX540_120.so
+lib/libIMGegl.so
+lib/libpvr2d.so
+lib/libsrv_init.so
+lib/libsrv_um.so
+lib/libPVRScopeServices.so
+lib/libglslcompiler.so
+lib/libpvrANDROID_WSEGL.so
+bin/pvrsrvinit
 
 lib/hw/copybit.s5pc110.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.s5pc110.so
 lib/hw/lights.s5pc110.so
 lib/hw/sensors.default.so
+
+bin/immvibed
+bin/racoon
 "
 
 for FILE in $FILES; do
@@ -365,8 +381,6 @@ PRODUCT_COPY_FILES += \\
 # Wifi
 #
 PRODUCT_COPY_FILES += \\
-    vendor/samsung/__DEVICE__/proprietary/lib/libwlandut.so:system/lib/libandut.so \\
-    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so \\
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net.txt:system/etc/wifi/nvram_net.txt \\
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_mfg.txt:system/etc/wifi/nvram_mfg.txt \\
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/bcm4329_aps.bin:system/etc/wifi/bcm4329_aps.bin \\
@@ -374,8 +388,13 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/bcm4329_sta.bin:system/etc/wifi/bcm4329_sta.bin \\
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/wifi.conf:system/etc/wifi/wifi.conf \\
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libwlandut.so:system/lib/libwlandut.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libwpa_client.so:system/lib/libwpa_client.so \\
     vendor/samsung/__DEVICE__/proprietary/bin/wpa_supplicant:system/bin/wpa_supplicant \\
-    vendor/samsung/__DEVICE__/proprietary/bin/wlservice:system/bin/wlservice
+    vendor/samsung/__DEVICE__/proprietary/bin/wlservice:system/bin/wlservice \\
+    vendor/samsung/__DEVICE__/proprietary/bin/btld:system/bin/btld \\
+    vendor/samsung/__DEVICE__/proprietary/bin/BCM4329B1_002.002.023.0417.0435.hcd:system/bin/BCM4329B1_002.002.023.0417.0435.hcd
 
 #
 # DHCPCD
@@ -395,7 +414,15 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/egl/libEGL_POWERVR_SGX540_120.so:system/lib/egl/libEGL_POWERVR_SGX540_120.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so:system/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so \\
-    vendor/samsung/__DEVICE__/proprietary/lib/egl/libGLESv2_POWERVR_SGX540_120.so:system/lib/egl/libGLESv2_POWERVR_SGX540_120.so
+    vendor/samsung/__DEVICE__/proprietary/lib/egl/libGLESv2_POWERVR_SGX540_120.so:system/lib/egl/libGLESv2_POWERVR_SGX540_120.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libIMGegl.so:system/lib/libIMGegl.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libpvr2d.so:system/lib/libpvr2d.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libsrv_init.so:system/lib/libsrv_init.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libsrv_um.so:system/lib/libsrv_um.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libPVRScopeServices.so:system/lib/libPVRScopeServices.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libglslcompiler.so:system/lib/libglslcompiler.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libpvrANDROID_WSEGL.so:system/lib/libpvrANDROID_WSEGL.so \\
+    vendor/samsung/__DEVICE__/proprietary/bin/pvrsrvinit:system/bin/pvrsrvinit
 
 #
 # Sensors, Lights etc
@@ -430,7 +457,6 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:system/lib/libsecril-client.so \\
     vendor/samsung/__DEVICE__/proprietary/bin/drexe:system/bin/drexe \\
     vendor/samsung/__DEVICE__/proprietary/bin/rild:system/bin/rild \\
-    vendor/samsung/__DEVICE__/proprietary/bin/btld:system/bin/btld \\
     vendor/samsung/__DEVICE__/proprietary/bin/rilclient-test:system/bin/rilclient-test
 
 #
@@ -478,6 +504,13 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:system/lib/libtvout.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:system/lib/libs3cjpeg.so \\
     vendor/samsung/__DEVICE__/proprietary/bin/tvoutserver:system/bin/tvoutserver
+
+#
+# TEST BINARY BLOBS
+#
+PRODUCT_COPY_FILES += \
+    vendor/samsung/__DEVICE__/proprietary/bin/immvibed:system/bin/immvibed \\
+    vendor/samsung/__DEVICE__/proprietary/bin/racoon:system/bin/racoon
 
 EOF
 
