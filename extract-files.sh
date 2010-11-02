@@ -268,6 +268,7 @@ etc/wifi/wpa_supplicant.conf
 lib/libwpa_client.so
 lib/libwlandut.so
 lib/libwlservice.so
+bin/BCM4329B1_002.002.023.0417.0435.hcd
 bin/wlservice
 bin/wpa_supplicant
 
