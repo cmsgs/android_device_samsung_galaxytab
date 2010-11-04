@@ -67,7 +67,7 @@ BOARD_EGL_CFG := device/samsung/galaxys/prebuilt/lib/egl/egl.cfg
 
 # Device related defines
 
-TARGET_PREBUILT_KERNEL := device/samsung/galaxys/zImage
+TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x02e00000
 

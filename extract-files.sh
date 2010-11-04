@@ -303,6 +303,8 @@ lib/libsaaceomxoc.so
 lib/libsac3domxoc.so
 lib/libsamrdomxoc.so
 lib/libsamreomxoc.so
+lib/libsAMRNB.so
+lib/libsAMRWB.so
 lib/libsdiv3domxoc.so
 lib/libsflacdomxoc.so
 lib/libsmp3domxoc.so
@@ -480,6 +482,8 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsac3domxoc.so:system/lib/libsac3domxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsamrdomxoc.so:system/lib/libsamrdomxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsamreomxoc.so:system/lib/libsamreomxoc.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libsAMRNB.so:system/lib/libsAMRNB.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libsAMRWB.so:system/lib/libsAMRWB.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsdiv3domxoc.so:system/lib/libsdiv3domxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsflacdomxoc.so:system/lib/libsflacdomxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsmp3domxoc.so:system/lib/libsmp3domxoc.so \\
