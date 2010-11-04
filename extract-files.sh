@@ -313,8 +313,11 @@ lib/libsmp4vdomxoc.so
 lib/libsmp4veomxoc.so
 lib/libsvc1domxoc.so
 lib/libswmadomxoc.so
+lib/libswmfdocn.so
+lib/libswmfdreg.so
 lib/libswmv7domxoc.so
 lib/libswmv8domxoc.so
+
 
 bin/tvoutserver
 lib/lib_tvoutengine.so
@@ -492,10 +495,12 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsmp4veomxoc.so:system/lib/libsmp4veomxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libsvc1domxoc.so:system/lib/libsvc1domxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libswmadomxoc.so:system/lib/libswmadomxoc.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libswmfdocn.so:system/lib/libswmfdocn.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libswmfdreg.so:system/lib/libswmfdreg.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libswmv7domxoc.so:system/lib/libswmv7domxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libswmv8domxoc.so:system/lib/libswmv8domxoc.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libomx_sharedlibrary.so:system/lib/libomx_sharedlibrary.so \\
-    vendor/samsung/__DEVICE__/proprietary/lib/libstagefright_omx.so:system/lib/libstagefright_omx.so
+    vendor/samsung/__DEVICE__/proprietary/lib/libstagefright_omx.so:system/lib/libstagefright_omx.so \\
 
 #
 # TV-Out
