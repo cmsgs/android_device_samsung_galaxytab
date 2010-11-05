@@ -87,6 +87,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/galaxys/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/samsung/galaxys/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    device/samsung/galaxys/prebuilt/etc/vold.fstab:system/etc/vold.conf \
     device/samsung/galaxys/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
 
