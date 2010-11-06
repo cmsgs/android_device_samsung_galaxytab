@@ -36,6 +36,8 @@ bin/btld
 bin/dbus-daemon
 bin/dhcpcd
 bin/drexe
+bin/hciattach
+bin/npsmobex
 bin/gpsd/66ca3eb6.0
 bin/gpsd/7651b327.0
 bin/gpsd/803ca020.0
@@ -66,6 +68,7 @@ CSCFiles.txt
 csc/others.xml
 csc/sales_code.dat
 CSCVersion.txt
+etc/jupiter.xml
 etc/dhcpcd/dhcpcd.conf
 etc/dhcpcd/dhcpcd-hooks/01-test
 etc/dhcpcd/dhcpcd-hooks/20-dns.conf
@@ -100,8 +103,10 @@ lib/libIMGegl.so
 lib/libpvr2d.so
 lib/libpvrANDROID_WSEGL.so
 lib/libPVRScopeServices.so
+
 lib/libreference-ril.so
 lib/libril.so
+
 lib/libs263domxoc.so
 lib/libs263eomxoc.so
 lib/libs264domxoc.so
@@ -116,8 +121,10 @@ lib/libsdiv3domxoc.so
 lib/libseccameraadaptor.so
 lib/libseccamera.so
 lib/libsecgps.so
+
 lib/libsecril-client.so
 lib/libsec-ril.so
+
 lib/libsflacdomxoc.so
 lib/libsmp3domxoc.so
 lib/libsmp4fmocn.so
@@ -139,15 +146,15 @@ lib/libwlservice.so
 SW_Configuration.xml
 xbin/su
 
+lib/libhardware.so
+lib/libhardware_legacy.so
+
 bin/sensorcalibutil_yamaha
 bin/sensorserver_yamaha
 bin/sensorstatutil_yamaha
 lib/libms3c_yamaha.so
 lib/libsensor_yamaha.so
 lib/libsensor_yamaha_test.so
-
-lib/libhardware.so
-lib/libhardware_legacy.so
 "
 
 for FILE in $FILES; do
@@ -185,6 +192,8 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/bin/dbus-daemon:system/bin/dbus-daemon \\
     vendor/samsung/__DEVICE__/proprietary/bin/dhcpcd:system/bin/dhcpcd \\
     vendor/samsung/__DEVICE__/proprietary/bin/drexe:system/bin/drexe \\
+    vendor/samsung/__DEVICE__/proprietary/bin/hciattach:system/bin/hciattach \\
+    vendor/samsung/__DEVICE__/proprietary/bin/npsmobex:system/bin/npsmobex \\
     vendor/samsung/__DEVICE__/proprietary/bin/gpsd/66ca3eb6.0:system/bin/gpsd/66ca3eb6.0 \\
     vendor/samsung/__DEVICE__/proprietary/bin/gpsd/7651b327.0:system/bin/gpsd/7651b327.0 \\
     vendor/samsung/__DEVICE__/proprietary/bin/gpsd/803ca020.0:system/bin/gpsd/803ca020.0 \\
@@ -215,6 +224,7 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/csc/others.xml:system/csc/others.xml \\
     vendor/samsung/__DEVICE__/proprietary/csc/sales_code.dat:system/csc/sales_code.dat \\
     vendor/samsung/__DEVICE__/proprietary/CSCVersion.txt:system/CSCVersion.txt \\
+    vendor/samsung/__DEVICE__/proprietary/etc/jupiter.xml:system/etc/jupiter.xml \\
     vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \\
     vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-hooks/01-test:system/etc/dhcpcd/dhcpcd-hooks/01-test \\
     vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-hooks/20-dns.conf:system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \\
@@ -240,7 +250,6 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/hw/lights.s5pc110.so:system/lib/hw/lights.s5pc110.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \\
-
     vendor/samsung/__DEVICE__/proprietary/lib/libarccamera.so:system/lib/libarccamera.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libcamerafirmwarejni.so:system/lib/libcamerafirmwarejni.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:system/lib/libcamera.so \\
@@ -291,20 +300,21 @@ PRODUCT_COPY_FILES += \\
 #
 # TESTING
 #
+PRODUCT_COPY_FILES += \\
    vendor/samsung/__DEVICE__/proprietary/lib/libhardware.so:system/lib/libhardware.so \\
-   vendor/samsung/__DEVICE__/proprietary/lib/libhardware_legacy.so:system/lib/libhardware_legacy.so \\
+   vendor/samsung/__DEVICE__/proprietary/lib/libhardware_legacy.so:system/lib/libhardware_legacy.so
 
 #
 # Sensors
 # Need to fix it first: https://github.com/jt1134/platform_frameworks_base/commit/631e923977e5e977a21023283c499dab729cef1f
 #
-#PRODUCT_COPY_FILES += \\
-#    vendor/samsung/__DEVICE__/proprietary/bin/sensorcalibutil_yamaha:system/bin/sensorcalibutil_yamaha \\
-#    vendor/samsung/__DEVICE__/proprietary/bin/sensorserver_yamaha:system/bin/sensorserver_yamaha \\
-#    vendor/samsung/__DEVICE__/proprietary/bin/sensorstatutil_yamaha:system/bin/sensorstatutil_yamaha \\
-#    vendor/samsung/__DEVICE__/proprietary/lib/libms3c_yamaha.so:system/lib/libms3c_yamaha.so \\
-#    vendor/samsung/__DEVICE__/proprietary/lib/libsensor_yamaha.so:system/lib/libsensor_yamaha.so \\
-#    vendor/samsung/__DEVICE__/proprietary/lib/libsensor_yamaha_test.so:system/lib/libsensor_yamaha_test.so
+PRODUCT_COPY_FILES += \\
+    vendor/samsung/__DEVICE__/proprietary/bin/sensorcalibutil_yamaha:system/bin/sensorcalibutil_yamaha \\
+    vendor/samsung/__DEVICE__/proprietary/bin/sensorserver_yamaha:system/bin/sensorserver_yamaha \\
+    vendor/samsung/__DEVICE__/proprietary/bin/sensorstatutil_yamaha:system/bin/sensorstatutil_yamaha \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libms3c_yamaha.so:system/lib/libms3c_yamaha.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libsensor_yamaha.so:system/lib/libsensor_yamaha.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libsensor_yamaha_test.so:system/lib/libsensor_yamaha_test.so
 
 EOF
 

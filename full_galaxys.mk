@@ -32,12 +32,10 @@ PRODUCT_COPY_FILES += \
 $(call inherit-product-if-exists, vendor/samsung/GT-I9000/GT-I9000-vendor.mk)
 
 ## (3) Finally, the least specific parts, i.e. the non-GSM-specific aspects
-PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libargs=-d /dev/ttyS0 \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
-    rild.libpath=/system/lib/libsec-ril.so \
+    rild.libpath=/system/lib/libreference-ril.so \
     rild.libargs=-d /dev/ttyS0 \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=15
