@@ -49,8 +49,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.startheapsize=8m \
-    dalvik.vm.heapsize=48m
-    #dalvik.vm.execution-mode=int:jit
+    dalvik.vm.heapsize=48m \
+    dalvik.vm.execution-mode=int:jit
 
 # Galaxy S uses high-density artwork where available
 PRODUCT_LOCALES := hdpi
