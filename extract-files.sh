@@ -61,13 +61,6 @@ bin/tvoutserver
 bin/vold
 bin/wlservice
 bin/wpa_supplicant
-csc/contents.db
-csc/customer.xml
-csc/feature.xml
-CSCFiles.txt
-csc/others.xml
-csc/sales_code.dat
-CSCVersion.txt
 etc/jupiter.xml
 etc/dhcpcd/dhcpcd.conf
 etc/dhcpcd/dhcpcd-hooks/01-test
@@ -143,8 +136,6 @@ lib/libtvout_jni.so
 lib/libtvoutservice.so
 lib/libtvout.so
 lib/libwlservice.so
-SW_Configuration.xml
-xbin/su
 
 lib/libhardware.so
 lib/libhardware_legacy.so
@@ -217,13 +208,6 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/bin/vold:system/bin/vold \\
     vendor/samsung/__DEVICE__/proprietary/bin/wlservice:system/bin/wlservice \\
     vendor/samsung/__DEVICE__/proprietary/bin/wpa_supplicant:system/bin/wpa_supplicant \\
-    vendor/samsung/__DEVICE__/proprietary/csc/contents.db:system/csc/contents.db \\
-    vendor/samsung/__DEVICE__/proprietary/csc/customer.xml:system/csc/customer.xml \\
-    vendor/samsung/__DEVICE__/proprietary/csc/feature.xml:system/csc/feature.xml \\
-    vendor/samsung/__DEVICE__/proprietary/CSCFiles.txt:system/CSCFiles.txt \\
-    vendor/samsung/__DEVICE__/proprietary/csc/others.xml:system/csc/others.xml \\
-    vendor/samsung/__DEVICE__/proprietary/csc/sales_code.dat:system/csc/sales_code.dat \\
-    vendor/samsung/__DEVICE__/proprietary/CSCVersion.txt:system/CSCVersion.txt \\
     vendor/samsung/__DEVICE__/proprietary/etc/jupiter.xml:system/etc/jupiter.xml \\
     vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \\
     vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-hooks/01-test:system/etc/dhcpcd/dhcpcd-hooks/01-test \\
@@ -295,18 +279,11 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/lib/libtvoutservice.so:system/lib/libtvoutservice.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:system/lib/libtvout.so \\
     vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so \\
-    vendor/samsung/__DEVICE__/proprietary/SW_Configuration.xml:system/SW_Configuration.xml \\
-    vendor/samsung/__DEVICE__/proprietary/xbin/su:system/xbin/su
-#
-# TESTING
-#
-PRODUCT_COPY_FILES += \\
-   vendor/samsung/__DEVICE__/proprietary/lib/libhardware.so:system/lib/libhardware.so \\
-   vendor/samsung/__DEVICE__/proprietary/lib/libhardware_legacy.so:system/lib/libhardware_legacy.so
+    vendor/samsung/__DEVICE__/proprietary/lib/libhardware.so:system/lib/libhardware.so \\
+    vendor/samsung/__DEVICE__/proprietary/lib/libhardware_legacy.so:system/lib/libhardware_legacy.so
 
 #
 # Sensors
-# Need to fix it first: https://github.com/jt1134/platform_frameworks_base/commit/631e923977e5e977a21023283c499dab729cef1f
 #
 PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/bin/sensorcalibutil_yamaha:system/bin/sensorcalibutil_yamaha \\
