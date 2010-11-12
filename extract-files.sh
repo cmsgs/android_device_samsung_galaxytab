@@ -20,10 +20,11 @@ mkdir -p ../../../vendor/samsung/$DEVICE/proprietary
 
 DIRS="
 bin
-lib/egl
-lib/hw
 etc/dhcpcd/dhcpcd-hooks
 etc/wifi
+lib/egl
+lib/hw
+media
 "
 
 for DIR in $DIRS; do
