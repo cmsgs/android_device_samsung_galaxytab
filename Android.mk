@@ -13,6 +13,6 @@
 # limitations under the License.
 
 
-include $(call all-named-subdir-makefiles, alsa_sound)
+# include $(call all-named-subdir-makefiles, alsa_sound)
 
 
