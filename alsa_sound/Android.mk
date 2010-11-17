@@ -39,13 +39,13 @@ endif
   LOCAL_C_INCLUDES += hardware/alsa_sound
 
   LOCAL_SRC_FILES:= alsa_galaxys.cpp
-  LOCAL_SRC_FILES:= ALSAMixer.cpp
+  LOCAL_SRC_FILES+= ALSAMixer.cpp
 
   LOCAL_SHARED_LIBRARIES := \
   	libasound \
   	liblog
 
-  LOCAL_MODULE:= alsa.GT-I9000
+  LOCAL_MODULE:= alsa.galaxys
 
   include $(BUILD_SHARED_LIBRARY)
 
