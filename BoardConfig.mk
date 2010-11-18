@@ -24,6 +24,7 @@
 # against the traditional rules of inheritance).
 
 #USE_CAMERA_STUB := true
+BOARD_OVERLAY_FORMAT_YCbRc_420_SP := true
 
 # inherit from the proprietary version
 -include vendor/samsung/GT-I9000/BoardConfigVendor.mk
