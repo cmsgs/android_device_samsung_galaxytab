@@ -48,6 +48,7 @@ TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 # Sound related defines
 BOARD_USES_ALSA_AUDIO := true
 BUILD_WITH_ALSA_UTILS := true
+ALSA_DEFAULT_SAMPLE_RATE := 44100
 
 # For the FM Radio
 BOARD_HAVE_FM_RADIO := true
