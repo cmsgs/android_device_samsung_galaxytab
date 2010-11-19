@@ -56,7 +56,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_LOCALES := hdpi
 
 # For emmc phone storage
-    ro.phone_storage = 1
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.phone_storage = 1 \
     ro.additionalmounts=/mnt/emmc
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
