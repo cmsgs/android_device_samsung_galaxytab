@@ -73,6 +73,9 @@ BRCM_BT_USE_BTL_IF := true
 
 BOARD_EGL_CFG := device/samsung/galaxys/prebuilt/lib/egl/egl.cfg
 
+# emmc storage
+BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
+
 # Device related defines
 
 TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
