@@ -55,6 +55,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Galaxy S uses high-density artwork where available
 PRODUCT_LOCALES := hdpi
 
+# For emmc phone storage
+    ro.phone_storage = 1
+    ro.additionalmounts=/mnt/emmc
+
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
 # media profiles and capabilities spec
