@@ -60,6 +60,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.phone_storage = 1 \
     ro.additionalmounts=/mnt/emmc
 
+# For mobiledatainterfaces
+PRODUCT_PROPERTY_OVERRIDES += \
+    mobiledata.interfaces =eth0,pdp0
+
+mobiledata.interfaces
+
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
 # media profiles and capabilities spec
