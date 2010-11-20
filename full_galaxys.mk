@@ -64,8 +64,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces =eth0,pdp0
 
-mobiledata.interfaces
-
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
 # media profiles and capabilities spec
