@@ -64,6 +64,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     mobiledata.interfaces =eth0,pdp0
 
+# For mobiledatainterfaces
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.gps.soket =/data/gpspipe
+
+
+
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
 # media profiles and capabilities spec

@@ -76,6 +76,9 @@ BOARD_EGL_CFG := device/samsung/galaxys/prebuilt/lib/egl/egl.cfg
 # emmc storage
 BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
 
+#GPS
+BOARD_USES_NMEA_GPS := true
+
 # Device related defines
 
 TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
