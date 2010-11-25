@@ -36,7 +36,7 @@ $(call inherit-product-if-exists, vendor/samsung/GT-I9000/GT-I9000-vendor.mk)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=240 \
     rild.libpath=/system/lib/libsec-ril.so \
-    rild.libargs=-d /dev/ttyS0 \
+    rild.libargs=-d[SPACE]/dev/ttyS0 \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=15
 
@@ -67,8 +67,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # For mobiledatainterfaces
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.soket =/data/gpspipe
-
-
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
