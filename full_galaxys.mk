@@ -62,11 +62,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # For mobiledatainterfaces
 PRODUCT_PROPERTY_OVERRIDES += \
-    mobiledata.interfaces =eth0,pdp0
+    mobiledata.interfaces = eth0,pdp0
 
-# For mobiledatainterfaces
+# For GPS
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.gps.soket =/data/gpspipe
+    ro.gps.soket = /data/gpspipe
+
+# For FM-Radio
+PRODUCT_PROPERTY_OVERRIDES += \
+    fmradio.device = fmradio
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
