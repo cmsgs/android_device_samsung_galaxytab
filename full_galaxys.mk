@@ -111,13 +111,15 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxys/prebuilt/etc/vold.fstab:system/etc/vold.conf \
     device/samsung/galaxys/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
-# iptables kernel modules
+# kernel modules
 PRODUCT_COPY_FILES += \
     device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/iptable_filter.ko:system/lib/modules/2.6.32.9/iptable_filter.ko \
     device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/iptable_mangle.ko:system/lib/modules/2.6.32.9/iptable_mangle.ko \
     device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/iptable_nat.ko:system/lib/modules/2.6.32.9/iptable_nat.ko \
     device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/iptable_raw.ko:system/lib/modules/2.6.32.9/iptable_raw.ko \
-    device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/ip_tables.ko:system/lib/modules/2.6.32.9/ip_tables.ko
+    device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/ip_tables.ko:system/lib/modules/2.6.32.9/ip_tables.ko \
+    device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
+    device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
