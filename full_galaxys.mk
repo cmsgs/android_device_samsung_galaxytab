@@ -39,7 +39,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     rild.libargs=-d[SPACE]/dev/ttyS0 \
     wifi.interface=eth0 \
     wifi.supplicant_scan_interval=15 \
-    ro.wifi.channels=13
+    ro.wifi.channels=13 \
+    ro.url.safetylegal=
 
 # The OpenGL ES API level that is natively supported by this device.
 # This is a 16.16 fixed point number
