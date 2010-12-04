@@ -72,6 +72,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     fmradio.device = fmradio
 
+#For RIL
+PRODUCT_PROPERTY_OVERRIDES += \
+    phone.ril.classname = com.android.internal.telephony.SamsungRIL
+
+
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
 
 # media profiles and capabilities spec
