@@ -88,6 +88,10 @@ $(call inherit-product, device/samsung/galaxys/media_a1026.mk)
 PRODUCT_COPY_FILES += \
     device/samsung/galaxys/media_profiles.xml:system/etc/media_profiles.xml
 
+# additional postinit scripts
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxys/prebuilt/etc/init.d/10htccopyright:system/etc/init.d/10htccopyright
+
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
