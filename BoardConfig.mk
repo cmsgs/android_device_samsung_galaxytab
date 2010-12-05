@@ -75,6 +75,10 @@ BRCM_BTL_INCLUDE_A2DP := true
 BRCM_BT_USE_BTL_IF := true
 WITH_A2DP := true
 
+#USB tethering
+
+RNDIS_DEVICE := "/sys/devices/virtual/sec/switch/tethering"
+
 # egl
 BOARD_EGL_CFG := device/samsung/galaxys/prebuilt/lib/egl/egl.cfg
 
