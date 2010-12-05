@@ -124,20 +124,14 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxys/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/galaxys/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
+# prebuilt zImage
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxys/zImage:zImage
+
 # kernel modules
 PRODUCT_COPY_FILES += \
     device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
     device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
-
-# Kernel
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/galaxys/kernel
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
 
 $(call inherit-product, build/target/product/full.mk)
 

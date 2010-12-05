@@ -31,8 +31,7 @@ BUILD_PV_VIDEO_ENCODERS := 1
 -include vendor/samsung/GT-I9000/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
-#TARGET_NO_RECOVERY := true
-#TARGET_NO_KERNEL := true
+TARGET_NO_KERNEL := true
 
 TARGET_BOARD := GT-I9000
 TARGET_BOARD_PLATFORM := s5pc110
@@ -86,7 +85,9 @@ BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
 BOARD_USES_NMEA_GPS := true
 
 # Device related defines
-TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
+#TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
+TARGET_NO_BUILD_WIFI := true
+TARGET_PREBUILT_MODULES := device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x02e00000
 
