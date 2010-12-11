@@ -55,7 +55,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.execution-mode=int:jit
 
 # Galaxy S uses high-density artwork where available
-PRODUCT_LOCALES := hdpi
+PRODUCT_LOCALES += hdpi
 
 # For emmc phone storage
 PRODUCT_PROPERTY_OVERRIDES += \
