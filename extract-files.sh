@@ -28,6 +28,7 @@ lib/egl
 lib/hw
 media
 xbin
+usr/keychars
 "
 
 for DIR in $DIRS; do
@@ -80,6 +81,9 @@ lib/libIMGegl.so
 lib/libpvrANDROID_WSEGL.so
 lib/libpvr2d.so
 lib/libPVRScopeServices.so
+lib/libsrv_um.so
+lib/libsrv_init.so
+lib/libglslcompiler.so
 bin/dbus-daemon
 bin/killmediaserver
 bin/logwrapper
@@ -107,6 +111,8 @@ lib/lib_tvoutengine.so
 lib/libtvoutfimc.so
 lib/libtvouthdmi.so
 lib/libtvout_jni.so
+lib/libedid.so
+lib/libddc.so
 bin/tvoutserver
 lib/libhardware.so
 lib/libhardware_legacy.so
@@ -115,6 +121,7 @@ lib/hw/copybit.s5pc110.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.s5pc110.so
 lib/hw/lights.s5pc110.so
+bin/akmd2
 bin/playlpm
 bin/charging_mode
 media/battery_charging_10.qmg
@@ -142,6 +149,10 @@ media/chargingwarning_disconnected.qmg
 media/chargingwarning_temp.qmg
 media/samsungani.qmg
 media/usb_not_charging.qmg
+usr/keychars/AT42QT602240_Touchscreen.kcm.bin
+usr/keychars/Broadcom_Bluetooth_HID.kcm.bin
+usr/keychars/gpio-keys.kcm.bin
+usr/keychars/p1_keyboard.kcm.bin
 "
 
 for FILE in $FILES; do
@@ -187,8 +198,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:system/lib/libsecril-client.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libril.so:system/lib/libril.so \
     vendor/samsung/__DEVICE__/proprietary/bin/rild:system/bin/rild \
-    vendor/samsung/__DEVICE__/proprietary/lib/libsec-ril.so:system/lib/libsec-ril.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libreference-ril.so:system/lib/libreference-ril.so
+    vendor/samsung/__DEVICE__/proprietary/lib/libsec-ril.so:system/lib/libsec-ril.so
 
 #
 # GPS
@@ -239,7 +249,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/btld:system/bin/btld 
 
 #
-# Grafics
+# Graphics/GL driver
 #
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/pvrsrvinit:system/bin/pvrsrvinit \
@@ -250,8 +260,10 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libIMGegl.so:system/lib/libIMGegl.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libpvrANDROID_WSEGL.so:system/lib/libpvrANDROID_WSEGL.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libpvr2d.so:system/lib/libpvr2d.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libPVRScopeServices.so:system/lib/libPVRScopeServices.so
-
+    vendor/samsung/__DEVICE__/proprietary/lib/libPVRScopeServices.so:system/lib/libPVRScopeServices.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libsrv_um.so:system/lib/libsrv_um.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libsrv_init.so:system/lib/libsrv_init.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libglslcompiler.so:system/lib/libglslcompiler.so
 
 
 #
@@ -305,6 +317,8 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libtvoutfimc.so:system/lib/libtvoutfimc.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libtvouthdmi.so:system/lib/libtvouthdmi.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout_jni.so:system/lib/libtvout_jni.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libedid.so:system/lib/libedid.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libddc.so:system/lib/libddc.so \
     vendor/samsung/__DEVICE__/proprietary/bin/tvoutserver:system/bin/tvoutserver 
 
 
@@ -324,12 +338,13 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/copybit.s5pc110.so:system/lib/hw/copybit.s5pc110.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/lights.s5pc110.so:system/lib/hw/lights.s5pc110.so
+    vendor/samsung/__DEVICE__/proprietary/lib/hw/lights.s5pc110.so:system/lib/hw/lights.s5pc110.so \
+    vendor/samsung/__DEVICE__/proprietary/bin/akmd2:system/bin/akmd2
 
 #
 # Files for battery charging screen
 #
-PRODUCT_COPY_FILES += \\
+PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/playlpm:system/bin/playlpm \
     vendor/samsung/__DEVICE__/proprietary/bin/charging_mode:system/bin/charging_mode \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_5.qmg:system/media/battery_charging_5.qmg \
@@ -358,6 +373,14 @@ PRODUCT_COPY_FILES += \\
     vendor/samsung/__DEVICE__/proprietary/media/samsungani.qmg:system/media/samsungani.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/usb_not_charging.qmg:system/media/usb_not_charging.qmg
 
+#
+# Keyboard
+#
+PRODUCT_COPY_FILES += \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/AT42QT602240_Touchscreen.kcm.bin:system/usr/keychars/AT42QT602240_Touchscreen.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin:system/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/gpio-keys.kcm.bin:system/usr/keychars/gpio-keys.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/p1_keyboard.kcm.bin:system/usr/keychars/p1_keyboard.kcm.bin
 
 EOF
 

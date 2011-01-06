@@ -29,7 +29,7 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/init.smdkc110.rc:root/init.smdkc110.rc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
-$(call inherit-product-if-exists, vendor/samsung/GT-I9000/GT-I9000-vendor.mk)
+$(call inherit-product-if-exists, vendor/samsung/GT-P1000/GT-P1000-vendor.mk)
 
 ## (3) Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
