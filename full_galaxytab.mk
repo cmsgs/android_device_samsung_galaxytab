@@ -26,7 +26,7 @@ $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/init.smdkc110.rc:root/init.smdkc110.rc
+    device/samsung/galaxytab/init.smdkc110.rc:root/init.smdkc110.rc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/GT-I9000/GT-I9000-vendor.mk)
@@ -34,7 +34,7 @@ $(call inherit-product-if-exists, vendor/samsung/GT-I9000/GT-I9000-vendor.mk)
 ## (3) Finally, the least specific parts, i.e. the non-GSM-specific aspects
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=240 \
+    ro.sf.lcd_density=200 \
     rild.libpath=/system/lib/libsec-ril.so \
     rild.libargs=-d[SPACE]/dev/ttyS0 \
     wifi.interface=eth0 \
@@ -71,26 +71,26 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.gps.soket = /data/gpspipe
 
 # For FM-Radio
-PRODUCT_PROPERTY_OVERRIDES += \
-    fmradio.device = fmradio
+#PRODUCT_PROPERTY_OVERRIDES += \
+#    fmradio.device = fmradio
 
 #For RIL
 PRODUCT_PROPERTY_OVERRIDES += \
     phone.ril.classname = com.android.internal.telephony.SamsungRIL
 
 
-DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxys/overlay
+DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxytab/overlay
 
 # media profiles and capabilities spec
-$(call inherit-product, device/samsung/galaxys/media_a1026.mk)
+$(call inherit-product, device/samsung/galaxytab/media_a1026.mk)
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/media_profiles.xml:system/etc/media_profiles.xml
+    device/samsung/galaxytab/media_profiles.xml:system/etc/media_profiles.xml
 
 # additional postinit scripts
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/prebuilt/etc/init.d/10htccopyright:system/etc/init.d/10htccopyright
+    device/samsung/galaxytab/prebuilt/etc/init.d/10htccopyright:system/etc/init.d/10htccopyright
 
 # Install the features available on this device.
 PRODUCT_COPY_FILES += \
@@ -99,45 +99,44 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-    frameworks/base/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 # Keylayout / Keychars
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/prebuilt/usr/keylayout/s3c-keypad.kl:system/usr/keylayout/s3c-keypad.kl \
-    device/samsung/galaxys/prebuilt/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
-    device/samsung/galaxys/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/samsung/galaxys/prebuilt/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
-    device/samsung/galaxys/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/samsung/galaxys/prebuilt/usr/keychars/s3c-keypad.kcm.bin:system/usr/keychars/s3c-keypad.kcm.bin \
-    device/samsung/galaxys/prebuilt/usr/keychars/sec_jack.kcm.bin:system/usr/keychars/sec_jack.kcm.bin \
-    device/samsung/galaxys/prebuilt/usr/keychars/melfas-touchkey.kcm.bin:system/usr/keychars/melfas-touchkey.kcm.bin \
-    device/samsung/galaxys/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/samsung/galaxys/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin 
+    device/samsung/galaxytab/prebuilt/usr/keylayout/s3c-keypad.kl:system/usr/keylayout/s3c-keypad.kl \
+    device/samsung/galaxytab/prebuilt/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
+    device/samsung/galaxytab/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    device/samsung/galaxytab/prebuilt/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
+    device/samsung/galaxytab/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    device/samsung/galaxytab/prebuilt/usr/keychars/s3c-keypad.kcm.bin:system/usr/keychars/s3c-keypad.kcm.bin \
+    device/samsung/galaxytab/prebuilt/usr/keychars/sec_jack.kcm.bin:system/usr/keychars/sec_jack.kcm.bin \
+    device/samsung/galaxytab/prebuilt/usr/keychars/melfas-touchkey.kcm.bin:system/usr/keychars/melfas-touchkey.kcm.bin \
+    device/samsung/galaxytab/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
+    device/samsung/galaxytab/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin 
 
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/prebuilt/etc/asound.conf:system/etc/asound.conf \
-    device/samsung/galaxys/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/samsung/galaxys/prebuilt/etc/vold.fstab:system/etc/vold.conf \
-    device/samsung/galaxys/prebuilt/etc/wifi/wifi.conf:system/etc/wifi/wifi.conf \
-    device/samsung/galaxys/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/samsung/galaxys/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg
+    device/samsung/galaxytab/prebuilt/etc/asound.conf:system/etc/asound.conf \
+    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.conf \
+    device/samsung/galaxytab/prebuilt/etc/wifi.conf:system/etc/wifi.conf \
+    device/samsung/galaxytab/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/samsung/galaxytab/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg
 
 # prebuilt zImage
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/zImage:zImage
+    device/samsung/galaxytab/zImage:zImage
 
 # kernel modules
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
-    device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
+    device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
 
 $(call inherit-product, build/target/product/full.mk)
 
-PRODUCT_NAME := full_galaxys
-PRODUCT_DEVICE := GT-I9000
-PRODUCT_MODEL := SAMSUNG-GT-I9000
+PRODUCT_NAME := full_galaxytab
+PRODUCT_DEVICE := GT-P1000
+PRODUCT_MODEL := SAMSUNG-GT-P1000
 PRODUCT_BRAND := Samsung
 PRODUCT_MANUFACTURER := Samsung
 TARGET_IS_GALAXYS := true

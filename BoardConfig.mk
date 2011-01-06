@@ -28,12 +28,12 @@ BOARD_OVERLAY_FORMAT_YCbRc_420_SP := true
 BUILD_PV_VIDEO_ENCODERS := 1
 
 # inherit from the proprietary version
--include vendor/samsung/GT-I9000/BoardConfigVendor.mk
+-include vendor/samsung/GT-P1000/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := true
 
-TARGET_BOARD := GT-I9000
+TARGET_BOARD := GT-P1000
 TARGET_BOARD_PLATFORM := s5pc110
 TARGET_BOARD_PLATFORM_GPU := POWERVR_SGX540_120
 
@@ -51,7 +51,7 @@ BUILD_WITH_ALSA_UTILS := true
 ALSA_DEFAULT_SAMPLE_RATE := 44100
 
 # For the FM Radio
-BOARD_HAVE_FM_RADIO := true
+BOARD_HAVE_FM_RADIO := false
 
 # WiFi related defines
 BOARD_WPA_SUPPLICANT_DRIVER := WEXT
@@ -80,7 +80,7 @@ WITH_A2DP := true
 RNDIS_DEVICE := "/sys/devices/virtual/sec/switch/tethering"
 
 # egl
-BOARD_EGL_CFG := device/samsung/galaxys/prebuilt/lib/egl/egl.cfg
+BOARD_EGL_CFG := device/samsung/galaxytab/prebuilt/lib/egl/egl.cfg
 
 # emmc storage
 BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
@@ -91,7 +91,7 @@ BOARD_USES_NMEA_GPS := true
 # Device related defines
 #TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
 TARGET_NO_BUILD_WIFI := true
-TARGET_PREBUILT_MODULES := device/samsung/galaxys/prebuilt/lib/modules/2.6.32.9
+TARGET_PREBUILT_MODULES := device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x02e00000
 
@@ -101,9 +101,9 @@ BOARD_HAS_NO_RECOVERY_PARTITION := true
 BOARD_USES_FFORMAT := true
 #BOARD_RECOVERY_IGNORE_BOOTABLES := true
 
-BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00280000)
-BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00500000)
-BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x07500000)
+BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00780000)
+BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00780000)
+BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x14A00000)
 BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x04ac0000)
 # The size of a block that can be marked bad.
 BOARD_FLASH_BLOCK_SIZE := 131072
