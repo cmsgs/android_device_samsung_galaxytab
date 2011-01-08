@@ -51,8 +51,6 @@ bin/gpsd/ed62f4e3.0
 bin/gpsd/f0b6e66f.0
 bin/gpsd/glgps_samsungJupiter
 etc/jupiter.xml
-lib/libgps.so
-lib/libsecgps.so
 bin/BCM4329B1_002.002.023.0534.0590.hcd
 etc/wifi/bcm4329_aps.bin
 etc/wifi/bcm4329_mfg.bin
@@ -114,14 +112,10 @@ lib/libtvout_jni.so
 lib/libedid.so
 lib/libddc.so
 bin/tvoutserver
-lib/libhardware.so
-lib/libhardware_legacy.so
-lib/hw/sensors.default.so
 lib/hw/copybit.s5pc110.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.s5pc110.so
 lib/hw/lights.s5pc110.so
-bin/akmd2
 bin/playlpm
 bin/charging_mode
 media/battery_charging_10.qmg
@@ -186,9 +180,7 @@ PRODUCT_COPY_FILES := \
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:obj/lib/libs3cjpeg.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libgps.so:obj/lib/libgps.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libsecgps.so:obj/lib/libsecgps.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so
 
 
 #
@@ -213,9 +205,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/gpsd/ed62f4e3.0:system/bin/gpsd/ed62f4e3.0 \
     vendor/samsung/__DEVICE__/proprietary/bin/gpsd/f0b6e66f.0:system/bin/gpsd/f0b6e66f.0 \
     vendor/samsung/__DEVICE__/proprietary/bin/gpsd/glgps_samsungJupiter:system/bin/gpsd/glgps_samsungJupiter \
-    vendor/samsung/__DEVICE__/proprietary/etc/jupiter.xml:system/etc/jupiter.xml \
-    vendor/samsung/__DEVICE__/proprietary/lib/libgps.so:system/lib/libgps.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libsecgps.so:system/lib/libsecgps.so 
+    vendor/samsung/__DEVICE__/proprietary/etc/jupiter.xml:system/etc/jupiter.xml
 
  
 #
@@ -322,24 +312,15 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/tvoutserver:system/bin/tvoutserver 
 
 
-#
-# TESTING
-#
-PRODUCT_COPY_FILES += \
-   vendor/samsung/__DEVICE__/proprietary/lib/libhardware.so:system/lib/libhardware.so \
-   vendor/samsung/__DEVICE__/proprietary/lib/libhardware_legacy.so:system/lib/libhardware_legacy.so
-
 
 #
-# Sensors
+# Hw support
 #
 PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/copybit.s5pc110.so:system/lib/hw/copybit.s5pc110.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/lights.s5pc110.so:system/lib/hw/lights.s5pc110.so \
-    vendor/samsung/__DEVICE__/proprietary/bin/akmd2:system/bin/akmd2
+    vendor/samsung/__DEVICE__/proprietary/lib/hw/lights.s5pc110.so:system/lib/hw/lights.s5pc110.so
 
 #
 # Files for battery charging screen

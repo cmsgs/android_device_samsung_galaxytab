@@ -14,5 +14,6 @@
 
 
 # include $(call all-named-subdir-makefiles, alsa_sound)
+include $(call all-named-subdir-makefiles, akmd libsensors)
 
 

@@ -35,6 +35,7 @@ $(call inherit-product-if-exists, vendor/samsung/GT-P1000/GT-P1000-vendor.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=200 \
+    ro.sf.hwrotation=90 \
     rild.libpath=/system/lib/libsec-ril.so \
     rild.libargs=-d[SPACE]/dev/ttyS0 \
     wifi.interface=eth0 \
@@ -51,7 +52,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.startheapsize=8m \
-    dalvik.vm.heapsize=32m \
+    dalvik.vm.heapsize=48m \
     dalvik.vm.execution-mode=int:jit
 
 # Galaxy S uses high-density artwork where available
@@ -136,7 +137,7 @@ $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := full_galaxytab
 PRODUCT_DEVICE := GT-P1000
-PRODUCT_MODEL := SAMSUNG-GT-P1000
+PRODUCT_MODEL := GT-P1000
 PRODUCT_BRAND := Samsung
 PRODUCT_MANUFACTURER := Samsung
 TARGET_IS_GALAXYS := true
