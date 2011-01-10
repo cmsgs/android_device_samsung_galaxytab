@@ -80,7 +80,7 @@ WITH_A2DP := true
 RNDIS_DEVICE := "/sys/devices/virtual/sec/switch/tethering"
 
 # egl
-BOARD_EGL_CFG := device/samsung/galaxytab/prebuilt/lib/egl/egl.cfg
+BOARD_EGL_CFG := vendor/samsung/GT-P1000/proprietary/lib/egl/egl.cfg
 
 # emmc storage
 BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
