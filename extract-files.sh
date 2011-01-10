@@ -29,6 +29,7 @@ lib/hw
 media
 xbin
 usr/keychars
+usr/keylayout
 "
 
 for DIR in $DIRS; do
@@ -62,7 +63,6 @@ etc/wifi/nvram_net.txt
 etc/wifi/nvram_net_2G.txt
 etc/wifi/nvram_net_lna.txt
 etc/wifi/nvram_net_nolna.txt
-etc/wifi/wpa_supplicant.conf
 etc/wifi.conf
 bin/wpa_supplicant
 bin/dhcpcd
@@ -71,6 +71,7 @@ lib/libwlservice.so
 bin/npsmobex
 bin/btld
 bin/pvrsrvinit
+lib/egl/egl.cfg
 lib/egl/libEGL_POWERVR_SGX540_120.so
 lib/egl/libGLES_android.so
 lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so
@@ -146,7 +147,19 @@ media/usb_not_charging.qmg
 usr/keychars/AT42QT602240_Touchscreen.kcm.bin
 usr/keychars/Broadcom_Bluetooth_HID.kcm.bin
 usr/keychars/gpio-keys.kcm.bin
+usr/keychars/melfas-touchkey.kcm.bin
 usr/keychars/p1_keyboard.kcm.bin
+usr/keychars/qwerty.kcm.bin
+usr/keychars/qwerty2.kcm.bin
+usr/keychars/sec_jack.kcm.bin
+usr/keylayout/AT42QT602240_Touchscreen.kl
+usr/keylayout/AVRCP.kl
+usr/keylayout/Broadcom_Bluetooth_HID.kl
+usr/keylayout/gpio-keys.kl
+usr/keylayout/melfas-touchkey.kl
+usr/keylayout/p1_keyboard.kl
+usr/keylayout/qwerty.kl
+usr/keylayout/sec_jack.kl
 "
 
 for FILE in $FILES; do
@@ -224,11 +237,10 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_lna.txt:system/etc/wifi/nvram_net_lna.txt \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_nolna.txt:system/etc/wifi/nvram_net_nolna.txt \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi.conf:system/etc/wifi.conf \
-    vendor/samsung/__DEVICE__/proprietary/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     vendor/samsung/__DEVICE__/proprietary/bin/wpa_supplicant:system/bin/wpa_supplicant \
     vendor/samsung/__DEVICE__/proprietary/bin/dhcpcd:system/bin/dhcpcd \
     vendor/samsung/__DEVICE__/proprietary/bin/wlservice:system/bin/wlservice \
-    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so 
+    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so
 
 
 #
@@ -243,6 +255,7 @@ PRODUCT_COPY_FILES += \
 #
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/pvrsrvinit:system/bin/pvrsrvinit \
+    vendor/samsung/__DEVICE__/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
     vendor/samsung/__DEVICE__/proprietary/lib/egl/libEGL_POWERVR_SGX540_120.so:system/lib/egl/libEGL_POWERVR_SGX540_120.so \
     vendor/samsung/__DEVICE__/proprietary/lib/egl/libGLES_android.so:system/lib/egl/libGLES_android.so \
     vendor/samsung/__DEVICE__/proprietary/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so:system/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so \
@@ -309,9 +322,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout_jni.so:system/lib/libtvout_jni.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libedid.so:system/lib/libedid.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libddc.so:system/lib/libddc.so \
-    vendor/samsung/__DEVICE__/proprietary/bin/tvoutserver:system/bin/tvoutserver 
-
-
+    vendor/samsung/__DEVICE__/proprietary/bin/tvoutserver:system/bin/tvoutserver
 
 #
 # Hw support
@@ -361,7 +372,19 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/usr/keychars/AT42QT602240_Touchscreen.kcm.bin:system/usr/keychars/AT42QT602240_Touchscreen.kcm.bin \
     vendor/samsung/__DEVICE__/proprietary/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin:system/usr/keychars/Broadcom_Bluetooth_HID.kcm.bin \
     vendor/samsung/__DEVICE__/proprietary/usr/keychars/gpio-keys.kcm.bin:system/usr/keychars/gpio-keys.kcm.bin \
-    vendor/samsung/__DEVICE__/proprietary/usr/keychars/p1_keyboard.kcm.bin:system/usr/keychars/p1_keyboard.kcm.bin
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/melfas-touchkey.kcm.bin:system/usr/keychars/melfas-touchkey.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/p1_keyboard.kcm.bin:system/usr/keychars/p1_keyboard.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keychars/sec_jack.kcm.bin:system/usr/keychars/sec_jack.kcm.bin \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/AT42QT602240_Touchscreen.kl:system/usr/keylayout/AT42QT602240_Touchscreen.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/p1_keyboard.kl:system/usr/keylayout/p1_keyboard.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
+    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl
 
 EOF
 

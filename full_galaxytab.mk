@@ -103,26 +103,10 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
-# Keylayout / Keychars
-PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/prebuilt/usr/keylayout/s3c-keypad.kl:system/usr/keylayout/s3c-keypad.kl \
-    device/samsung/galaxytab/prebuilt/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
-    device/samsung/galaxytab/prebuilt/usr/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    device/samsung/galaxytab/prebuilt/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
-    device/samsung/galaxytab/prebuilt/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
-    device/samsung/galaxytab/prebuilt/usr/keychars/s3c-keypad.kcm.bin:system/usr/keychars/s3c-keypad.kcm.bin \
-    device/samsung/galaxytab/prebuilt/usr/keychars/sec_jack.kcm.bin:system/usr/keychars/sec_jack.kcm.bin \
-    device/samsung/galaxytab/prebuilt/usr/keychars/melfas-touchkey.kcm.bin:system/usr/keychars/melfas-touchkey.kcm.bin \
-    device/samsung/galaxytab/prebuilt/usr/keychars/qwerty.kcm.bin:system/usr/keychars/qwerty.kcm.bin \
-    device/samsung/galaxytab/prebuilt/usr/keychars/qwerty2.kcm.bin:system/usr/keychars/qwerty2.kcm.bin 
-
 PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.conf \
-    device/samsung/galaxytab/prebuilt/etc/wifi.conf:system/etc/wifi.conf \
-    device/samsung/galaxytab/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/samsung/galaxytab/prebuilt/lib/egl/egl.cfg:system/lib/egl/egl.cfg
+    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.conf
 
 # prebuilt zImage
 PRODUCT_COPY_FILES += \
