@@ -106,7 +106,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/etc/asound.conf:system/etc/asound.conf \
     device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.conf
+    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.conf \
+    device/samsung/galaxytab/prebuilt/etc/jupiter.xml:system/etc/jupiter.xml
 
 # prebuilt zImage
 PRODUCT_COPY_FILES += \
