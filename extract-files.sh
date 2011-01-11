@@ -36,7 +36,6 @@ for DIR in $DIRS; do
 mkdir -p ../../../vendor/samsung/$DEVICE/proprietary/$DIR
 done
 
-
 FILES="
 lib/libsecril-client.so
 lib/libril.so
@@ -64,12 +63,7 @@ etc/wifi/nvram_net_2G.txt
 etc/wifi/nvram_net_lna.txt
 etc/wifi/nvram_net_nolna.txt
 etc/wifi.conf
-bin/wpa_supplicant
-bin/dhcpcd
-bin/wlservice 
-lib/libwlservice.so
-bin/npsmobex
-bin/btld
+bin/mfgloader
 bin/pvrsrvinit
 lib/egl/egl.cfg
 lib/egl/libEGL_POWERVR_SGX540_120.so
@@ -83,18 +77,10 @@ lib/libPVRScopeServices.so
 lib/libsrv_um.so
 lib/libsrv_init.so
 lib/libglslcompiler.so
-bin/dbus-daemon
 bin/killmediaserver
 bin/logwrapper
-bin/mfgloader
 bin/notified_event
-bin/vold
 xbin/su
-etc/dhcpcd/dhcpcd.conf
-etc/dhcpcd/dhcpcd-hooks/01-test
-etc/dhcpcd/dhcpcd-hooks/20-dns.conf
-etc/dhcpcd/dhcpcd-hooks/95-configured
-etc/dhcpcd/dhcpcd-run-hooks
 lib/libarccamera.so
 lib/libcamera_client.so
 lib/libcamera.so
@@ -119,6 +105,7 @@ lib/hw/gralloc.s5pc110.so
 lib/hw/lights.s5pc110.so
 bin/playlpm
 bin/charging_mode
+lib/libQmageDecoder.so
 media/battery_charging_10.qmg
 media/battery_charging_100.qmg
 media/battery_charging_15.qmg
@@ -191,10 +178,9 @@ done
 
 PRODUCT_COPY_FILES := \
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:obj/lib/libs3cjpeg.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so
-
+    vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:obj/lib/libs3cjpeg.so
 
 #
 # RIL
@@ -222,10 +208,11 @@ PRODUCT_COPY_FILES += \
 # use the one from prebuilt
 #    vendor/samsung/__DEVICE__/proprietary/etc/jupiter.xml:system/etc/jupiter.xml
 
- 
+
 #
 # WIFI
 #
+# mfg loader can be used to load different nvram_mfg
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/BCM4329B1_002.002.023.0534.0590.hcd:system/bin/BCM4329B1_002.002.023.0534.0590.hcd \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/bcm4329_aps.bin:system/etc/wifi/bcm4329_aps.bin \
@@ -238,19 +225,8 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_2G.txt:system/etc/wifi/nvram_net_2G.txt \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_lna.txt:system/etc/wifi/nvram_net_lna.txt \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_nolna.txt:system/etc/wifi/nvram_net_nolna.txt \
-    vendor/samsung/__DEVICE__/proprietary/etc/wifi.conf:system/etc/wifi.conf \
-    vendor/samsung/__DEVICE__/proprietary/bin/wpa_supplicant:system/bin/wpa_supplicant \
-    vendor/samsung/__DEVICE__/proprietary/bin/dhcpcd:system/bin/dhcpcd \
-    vendor/samsung/__DEVICE__/proprietary/bin/wlservice:system/bin/wlservice \
-    vendor/samsung/__DEVICE__/proprietary/lib/libwlservice.so:system/lib/libwlservice.so
-
-
-#
-# Bluetooth
-#
-PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/bin/npsmobex:system/bin/npsmobex \
-    vendor/samsung/__DEVICE__/proprietary/bin/btld:system/bin/btld 
+    vendor/samsung/__DEVICE__/proprietary/bin/mfgloader:system/bin/mfgloader \
+    vendor/samsung/__DEVICE__/proprietary/etc/wifi.conf:system/etc/wifi.conf
 
 #
 # Graphics/GL driver
@@ -275,26 +251,10 @@ PRODUCT_COPY_FILES += \
 # Samsung binary crap
 #
 PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/bin/dbus-daemon:system/bin/dbus-daemon \
     vendor/samsung/__DEVICE__/proprietary/bin/killmediaserver:system/bin/killmediaserver \
     vendor/samsung/__DEVICE__/proprietary/bin/logwrapper:system/bin/logwrapper \
-    vendor/samsung/__DEVICE__/proprietary/bin/mfgloader:system/bin/mfgloader \
     vendor/samsung/__DEVICE__/proprietary/bin/notified_event:system/bin/notified_event \
-    vendor/samsung/__DEVICE__/proprietary/bin/vold:system/bin/vold \
     vendor/samsung/__DEVICE__/proprietary/xbin/su:system/xbin/su
-
-
-
-#
-# Samsung config
-#
-PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
-    vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-hooks/01-test:system/etc/dhcpcd/dhcpcd-hooks/01-test \
-    vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-hooks/20-dns.conf:system/etc/dhcpcd/dhcpcd-hooks/20-dns.conf \
-    vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-hooks/95-configured:system/etc/dhcpcd/dhcpcd-hooks/95-configured \
-    vendor/samsung/__DEVICE__/proprietary/etc/dhcpcd/dhcpcd-run-hooks:system/etc/dhcpcd/dhcpcd-run-hooks
-
 
 #
 # camera
@@ -307,10 +267,10 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libseccamera.so:system/lib/libseccamera.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:system/lib/libs3cjpeg.so \
     vendor/samsung/__DEVICE__/proprietary/cameradata/datapattern_420sp.yuv:system/cameradata/datapattern_420sp.yuv \
-    vendor/samsung/__DEVICE__/proprietary/cameradata/datapattern_front_420sp.yuv:system/cameradata/datapattern_front_420sp.yuv \
-#   vendor/samsung/__DEVICE__/proprietary/lib/libcameraservice.so:system/lib/libcameraservice.so
+    vendor/samsung/__DEVICE__/proprietary/cameradata/datapattern_front_420sp.yuv:system/cameradata/datapattern_front_420sp.yuv
 
-
+# failing to load zygote with this one, what is missing?
+#    vendor/samsung/__DEVICE__/proprietary/lib/libcameraservice.so:system/lib/libcameraservice.so \
 
 #
 # TVOUT
@@ -341,6 +301,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/playlpm:system/bin/playlpm \
     vendor/samsung/__DEVICE__/proprietary/bin/charging_mode:system/bin/charging_mode \
+    vendor/samsung/__DEVICE__/proprietary/lib/libQmageDecoder.so:system/lib/libQmageDecoder.so \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_5.qmg:system/media/battery_charging_5.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_10.qmg:system/media/battery_charging_10.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_15.qmg:system/media/battery_charging_15.qmg \
@@ -361,10 +322,8 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_90.qmg:system/media/battery_charging_90.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_95.qmg:system/media/battery_charging_95.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/battery_charging_100.qmg:system/media/battery_charging_100.qmg \
-    vendor/samsung/__DEVICE__/proprietary/media/bootani.qmg:system/media/bootani.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/chargingwarning_disconnected.qmg:system/media/chargingwarning_disconnected.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/chargingwarning_temp.qmg:system/media/chargingwarning_temp.qmg \
-    vendor/samsung/__DEVICE__/proprietary/media/samsungani.qmg:system/media/samsungani.qmg \
     vendor/samsung/__DEVICE__/proprietary/media/usb_not_charging.qmg:system/media/usb_not_charging.qmg
 
 #
