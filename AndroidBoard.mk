@@ -28,5 +28,13 @@ LOCAL_PATH := $(call my-dir)
 #$(call add-radio-file,recovery/images/bitmap_size.txt)
 include $(CLEAR_VARS)
 
+# This will install the file in /system/etc
+#
+#include $(CLEAR_VARS)
+#LOCAL_MODULE_CLASS := ETC
+#LOCAL_MODULE := vold.fstab
+#LOCAL_SRC_FILES := $(LOCAL_MODULE)
+#include $(BUILD_PREBUILT)
+
 # include the non-open-source counterpart to this file
 -include vendor/samsung/GT-P1000/AndroidBoardVendor.mk

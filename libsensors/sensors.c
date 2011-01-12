@@ -15,8 +15,6 @@
  */
 
 #define LOG_TAG "Sensors"
-// for devices with ro.sf.hwrotation = 90
-#define HWROT90
 
 #include <hardware/sensors.h>
 #include <fcntl.h>
@@ -120,13 +118,8 @@ struct sensors_module_t HAL_MODULE_INFO_SYM = {
 
 #define AKM_DEVICE_NAME     "/dev/akm8973_aot"
 
-#ifdef HWROT90
 #define EVENT_TYPE_ACCEL_X          ABS_Z
 #define EVENT_TYPE_ACCEL_Y          ABS_X
-#else
-#define EVENT_TYPE_ACCEL_X          ABS_X
-#define EVENT_TYPE_ACCEL_Y          ABS_Z
-#endif
 #define EVENT_TYPE_ACCEL_Z          ABS_Y
 #define EVENT_TYPE_ACCEL_STATUS     ABS_WHEEL
 
@@ -148,8 +141,8 @@ struct sensors_module_t HAL_MODULE_INFO_SYM = {
 
 // conversion of acceleration data to SI units (m/s^2)
 #define CONVERT_A                   (GRAVITY_EARTH / LSG)
-#define CONVERT_A_X                 (-CONVERT_A)
-#define CONVERT_A_Y                 (CONVERT_A)
+#define CONVERT_A_X                 (CONVERT_A)
+#define CONVERT_A_Y                 (-CONVERT_A)
 #define CONVERT_A_Z                 (CONVERT_A)
 
 // conversion of magnetic data to uT units
