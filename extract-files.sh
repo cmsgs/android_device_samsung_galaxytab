@@ -78,7 +78,6 @@ lib/libsrv_um.so
 lib/libsrv_init.so
 lib/libglslcompiler.so
 bin/killmediaserver
-bin/logwrapper
 bin/notified_event
 xbin/su
 lib/libarccamera.so
@@ -252,7 +251,6 @@ PRODUCT_COPY_FILES += \
 #
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/killmediaserver:system/bin/killmediaserver \
-    vendor/samsung/__DEVICE__/proprietary/bin/logwrapper:system/bin/logwrapper \
     vendor/samsung/__DEVICE__/proprietary/bin/notified_event:system/bin/notified_event \
     vendor/samsung/__DEVICE__/proprietary/xbin/su:system/xbin/su
 
