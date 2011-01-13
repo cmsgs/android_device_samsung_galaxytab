@@ -41,6 +41,7 @@ lib/libsecril-client.so
 lib/libril.so
 bin/rild
 lib/libsec-ril.so
+bin/vold
 bin/gpsd/66ca3eb6.0
 bin/gpsd/7651b327.0
 bin/gpsd/803ca020.0
@@ -252,6 +253,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/bin/killmediaserver:system/bin/killmediaserver \
     vendor/samsung/__DEVICE__/proprietary/bin/notified_event:system/bin/notified_event \
+    vendor/samsung/__DEVICE__/proprietary/bin/vold:system/bin/vold \
     vendor/samsung/__DEVICE__/proprietary/xbin/su:system/xbin/su
 
 #
