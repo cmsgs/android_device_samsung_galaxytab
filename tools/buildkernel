@@ -1,0 +1,16 @@
+#!/bin/bash
+
+HERE=`pwd`
+DEPTH=../../../..
+
+mv ${DEPTH}/initramfs/galaxytab/.git .
+
+cd ${DEPTH}/kernel-tab
+source env.sh
+cd Kernel
+MAKE_KERNEL
+cd ${HERE}
+
+mv .git ${DEPTH}/initramfs/galaxytab/
+cp ${DEPTH}/kernel-tab/Kernel/arch/arm/boot/zImage .
+

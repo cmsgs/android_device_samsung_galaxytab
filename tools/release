@@ -1,0 +1,6 @@
+
+zip -9 cm.zip factoryfs.ext4 zImage dbdata.rfs cache.rfs flashme readme.txt
+
+mv cm.zip /files/www/htdocs/tab/cm.zip
+
+

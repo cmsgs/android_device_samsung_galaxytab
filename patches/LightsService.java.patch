@@ -1,0 +1,13 @@
+--- LightsService.java.org	2011-01-15 16:39:59.000000000 -0800
++++ LightsService.java	2011-01-12 04:10:38.000000000 -0800
+@@ -142,6 +142,10 @@
+                 	mOnMS = onMS;
+                 	mOffMS = offMS;
+                 	setLight_native(mNativePointer, mId, color, mode, onMS, offMS, brightnessMode);
++                	if (LIGHT_ID_BACKLIGHT == mId)
++                	{   // set button backlight when LCD backlight is on
++                	    setLight_native(mNativePointer, LIGHT_ID_BUTTONS, (color != 0)?0xFFFFFF:0, LIGHT_FLASH_NONE, 0, 0, BRIGHTNESS_MODE_USER);
++                	}
+             	}
+         }
+ 
