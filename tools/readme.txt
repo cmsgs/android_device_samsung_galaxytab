@@ -37,7 +37,7 @@ Issues and workarounds
     run "adb shell mount"
     it will show list of mounted partitions, if /data is not mounted (to /dev/block/mmcblk0p2) reformat it.
     To do that "adb reboot recovery". Select format /data from recovery menu
-    If that doesnt work. "adb shell" when in recovery, gparted /dev/block/mmcblk0, initialize/format partition 2 to fat32
+    If that doesnt work. "adb shell" when in recovery, parted /dev/block/mmcblk0, initialize/format partition 2 to fat32 "mkfs 2 fat32"
 
 * BT doesnt start
     Try again
@@ -45,6 +45,10 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting. I have added code to stop it automatically.
 
 Latest fixes:
+
+2011-01-16
+Moved everything to http://github.com/cmsgs
+This build should be functionally the same
 
 2011-01-15
 Fix vold configuration so usb mount/unmount works
