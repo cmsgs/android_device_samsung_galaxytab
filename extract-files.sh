@@ -341,7 +341,6 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/usr/keylayout/Broadcom_Bluetooth_HID.kl:system/usr/keylayout/Broadcom_Bluetooth_HID.kl \
     vendor/samsung/__DEVICE__/proprietary/usr/keylayout/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl \
     vendor/samsung/__DEVICE__/proprietary/usr/keylayout/melfas-touchkey.kl:system/usr/keylayout/melfas-touchkey.kl \
-    vendor/samsung/__DEVICE__/proprietary/usr/keylayout/p1_keyboard.kl:system/usr/keylayout/p1_keyboard.kl \
     vendor/samsung/__DEVICE__/proprietary/usr/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     vendor/samsung/__DEVICE__/proprietary/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl
 

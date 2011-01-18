@@ -2,14 +2,12 @@ This is a beta build of CyanogenMod 6 froyo
 by Technomancer <dominikbehr@yahoo.com>
 This build is for beta testing, not for general consumption
 
-
-See http://nosuchaddress.net/tab for more info
-My github is http://github.com/techomancer
-(yes, i know it's not a typo)
+See http://cmsgs.com for more info
+The github for CMSGS Tab is http://github.com/cmsgs
 
 It is based on great work of CM SGS team http://cmsgs.com
 
-Thanks to codeworkx and coolya and all beta testers.
+Thanks to codeworkx, coolya and noobnl and all beta testers.
 
 Flash it with heimdall (use simple flashme script for full flash)
 Or just flash zImage and factoryfs.ext4.
@@ -46,9 +44,12 @@ Issues and workarounds
 
 Latest fixes:
 
+2011-01-17
+Fix p1_keyboard.kl, remove key codes unsupported in CM. add left and right alt.
+
 2011-01-16
 Moved everything to http://github.com/cmsgs
-This build should be functionally the same
+This build should be functionally the same as previous one
 
 2011-01-15
 Fix vold configuration so usb mount/unmount works
