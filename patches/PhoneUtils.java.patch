@@ -1,17 +1,5 @@
 --- PhoneUtils.java.org	2011-01-15 16:40:59.000000000 -0800
 +++ PhoneUtils.java	2011-01-15 03:53:05.000000000 -0800
-@@ -1689,7 +1689,10 @@
-         // manage the wake locks *and* arrange for the screen to come on at
-         // the exact moment that the InCallScreen is ready to be displayed.
-         // (See bug 1648751.)
--      //  app.preventScreenOn(true);
-+
-+        // workaround, uncomment after real fix
-+        // app.preventScreenOn(true);
-+
-         app.requestWakeState(PhoneApp.WakeState.FULL);
- 
-         // Fire off the InCallScreen intent.
 @@ -2355,8 +2358,10 @@
      private static void activateSpeakerIfDocked(Phone phone) {
          if (DBG) log("activateSpeakerIfDocked()...");
