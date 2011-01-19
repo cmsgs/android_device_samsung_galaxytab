@@ -648,15 +648,15 @@ const char *AudioHardware::getOutputRouteFromDevice(uint32_t device)
 {
     switch (device) {
     case AudioSystem::DEVICE_OUT_EARPIECE:
-        return "RCV";
     case AudioSystem::DEVICE_OUT_SPEAKER:
         return "SPK";
     case AudioSystem::DEVICE_OUT_WIRED_HEADPHONE:
+        return "HP3P";
     case AudioSystem::DEVICE_OUT_WIRED_HEADSET:
-        return "HP";
+        return "HP4P";
     case (AudioSystem::DEVICE_OUT_SPEAKER|AudioSystem::DEVICE_OUT_WIRED_HEADPHONE):
     case (AudioSystem::DEVICE_OUT_SPEAKER|AudioSystem::DEVICE_OUT_WIRED_HEADSET):
-        return "SPK_HP";
+        return "DUAL";
     case AudioSystem::DEVICE_OUT_BLUETOOTH_SCO:
     case AudioSystem::DEVICE_OUT_BLUETOOTH_SCO_HEADSET:
     case AudioSystem::DEVICE_OUT_BLUETOOTH_SCO_CARKIT:
@@ -670,12 +670,12 @@ const char *AudioHardware::getVoiceRouteFromDevice(uint32_t device)
 {
     switch (device) {
     case AudioSystem::DEVICE_OUT_EARPIECE:
-        return "RCV";
     case AudioSystem::DEVICE_OUT_SPEAKER:
         return "SPK";
     case AudioSystem::DEVICE_OUT_WIRED_HEADPHONE:
+        return "HP3P";
     case AudioSystem::DEVICE_OUT_WIRED_HEADSET:
-        return "HP";
+        return "HP4P";
     case AudioSystem::DEVICE_OUT_BLUETOOTH_SCO:
     case AudioSystem::DEVICE_OUT_BLUETOOTH_SCO_HEADSET:
     case AudioSystem::DEVICE_OUT_BLUETOOTH_SCO_CARKIT:
@@ -688,9 +688,9 @@ const char *AudioHardware::getVoiceRouteFromDevice(uint32_t device)
 const char *AudioHardware::getInputRouteFromDevice(uint32_t device)
 {
     if (mMicMute) {
-        return "Off";
+        return "OFF";
     }
-	 switch (device) {
+     switch (device) {
       case AudioSystem::DEVICE_IN_BUILTIN_MIC:
         return "Main Mic";
     case AudioSystem::DEVICE_IN_WIRED_HEADSET:

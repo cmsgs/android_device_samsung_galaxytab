@@ -235,6 +235,7 @@ int pcm_write(struct pcm *pcm, void *data, unsigned count)
     x.buf = data;
     x.frames = (pcm->flags & PCM_MONO) ? (count / 2) : (count / 4);
 
+    //LOGV("write() %d frames", x.frames);
     for (;;) {
         if (!pcm->running) {
             if (ioctl(pcm->fd, SNDRV_PCM_IOCTL_PREPARE))
