@@ -424,15 +424,11 @@ status_t AudioHardware::setVoiceVolume(float volume)
     if (mMixer != NULL) {
         struct mixer_ctl *ctl;
         TRACE_DRIVER_IN(DRV_MIXER_GET)
-        if (device == AudioSystem::DEVICE_OUT_EARPIECE)
-            ctl= mixer_get_control(mMixer, "Output Volume - RCV", 0);
-        else
-            ctl= mixer_get_control(mMixer, "Output Volume - SPK/EAR", 0);
+        ctl= mixer_get_control(mMixer, "Playback Spkr Volume", 0);
         TRACE_DRIVER_OUT
 
         if (ctl != NULL) {
-            const char* name = (device == AudioSystem::DEVICE_OUT_EARPIECE ? "Output Volume - RCV":"Output Volume - SPK/EAR");
-            LOGV("setVoiceVolume() set %s to %f", name, volume);
+            LOGV("setVoiceVolume() set Playback Spkr Volume to %f", volume);
             TRACE_DRIVER_IN(DRV_MIXER_SET)
             mixer_ctl_set(ctl, volume * 5);
             TRACE_DRIVER_OUT
@@ -450,12 +446,12 @@ status_t AudioHardware::setMasterVolume(float volume)
     // return error - software mixer will handle it
 
     if (mMixer != NULL) {
-        LOGV("setMasterVolume() getting Output Volume - SPK/EAR control.");
+        LOGV("setMasterVolume() getting Playback Volume control.");
         TRACE_DRIVER_IN(DRV_MIXER_GET)
-        struct mixer_ctl *ctl= mixer_get_control(mMixer, "Output Volume - SPK/EAR", 0);
+        struct mixer_ctl *ctl= mixer_get_control(mMixer, "Playback Volume", 0);
         TRACE_DRIVER_OUT
         if (ctl != NULL) {
-            LOGV("setMasterVolume() set Output Volume - SPK/EAR to %f", volume);
+            LOGV("setMasterVolume() set Playback Volume to %f", volume);
             TRACE_DRIVER_IN(DRV_MIXER_SET)
             mixer_ctl_set(ctl, volume * 5);
             TRACE_DRIVER_OUT
