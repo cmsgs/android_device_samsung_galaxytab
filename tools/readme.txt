@@ -16,6 +16,7 @@ Thanks to codeworkx, coolya and noobnl and all beta testers.
 
 INSTALLATION
 
+Your Tab should be partitioned with P1_add_hidden
 Wipe your Tab (data, dbdata, cache)
 Flash it with heimdall (use simple flashme script for full flash)
 Or just flash zImage and factoryfs.ext4.
@@ -53,6 +54,9 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting. I have added code to stop it automatically.
 
 Latest fixes:
+
+2011-01-19
+Switch to Nexus S libaudio. Much simpler, doesn't crash and Bluetooth headset shows some signs of life.
 
 2011-01-17
 Fix p1_keyboard.kl, remove key codes unsupported in CM. add left and right alt.
