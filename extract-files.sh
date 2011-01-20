@@ -86,7 +86,6 @@ lib/libcamera.so
 lib/libcameraservice.so
 lib/libseccameraadaptor.so
 lib/libseccamera.so
-lib/libs3cjpeg.so
 cameradata/datapattern_420sp.yuv
 cameradata/datapattern_front_420sp.yuv
 lib/libtvoutservice.so
@@ -98,7 +97,6 @@ lib/libtvout_jni.so
 lib/libedid.so
 lib/libddc.so
 bin/tvoutserver
-lib/hw/copybit.s5pc110.so
 lib/hw/gralloc.default.so
 lib/hw/gralloc.s5pc110.so
 lib/hw/lights.s5pc110.so
@@ -178,8 +176,7 @@ done
 PRODUCT_COPY_FILES := \
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libs3cjpeg.so:obj/lib/libs3cjpeg.so
+    vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so
 
 #
 # RIL
@@ -288,7 +285,6 @@ PRODUCT_COPY_FILES += \
 # Hw support
 #
 PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/copybit.s5pc110.so:system/lib/hw/copybit.s5pc110.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so \
     vendor/samsung/__DEVICE__/proprietary/lib/hw/lights.s5pc110.so:system/lib/hw/lights.s5pc110.so

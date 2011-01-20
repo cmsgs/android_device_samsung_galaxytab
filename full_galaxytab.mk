@@ -120,6 +120,11 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
     device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
 
+# Misc other modules
+PRODUCT_PACKAGES += \
+    copybit.s5pc110
+
+
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := full_galaxytab

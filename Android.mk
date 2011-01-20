@@ -13,7 +13,7 @@
 # limitations under the License.
 
 
-# include $(call all-named-subdir-makefiles, alsa_sound)
 include $(call all-named-subdir-makefiles, akmd libsensors libaudio)
+include $(call all-makefiles-under,$(LOCAL_PATH/../common))
 
 
