@@ -122,8 +122,8 @@ PRODUCT_COPY_FILES += \
 
 # Misc other modules
 PRODUCT_PACKAGES += \
-    copybit.s5pc110
-
+    copybit.s5pc110 \
+    lights.s5pc110
 
 $(call inherit-product, build/target/product/full.mk)
 
