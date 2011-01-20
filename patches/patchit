@@ -6,8 +6,8 @@ cd ${DEPTH}/frameworks/base/services/java/com/android/server
 # patch for ro.sf.hwrotation and rotating events from touchscreen
 patch -p0 < ${HERE}/InputDevice.java.patch
 # turn on/off button backlight with LCD backlight
-patch -p0 < ${HERE}/LightsService.java.patch
-cd ${HERE}
+#patch -p0 < ${HERE}/LightsService.java.patch
+#cd ${HERE}
 cd ${DEPTH}/system/bluetooth/bluedroid
 # stop hciattach service before trying to start it and if starting fails
 patch -p0 < ${HERE}/bluetooth.c.patch
