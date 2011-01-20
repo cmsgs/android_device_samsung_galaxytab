@@ -33,14 +33,10 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
-static struct light_state_t g_notification;
-static struct light_state_t g_battery;
-static int g_backlight = 255;
 
 char const*const BUTTON_FILE = "/sys/class/leds/button-backlight/brightness";
 
 char const*const LCD_BACKLIGHT_FILE = "/sys/class/backlight/s3p_bl/brightness";
-
 
 /**
  * Aux method, write int to file
@@ -100,8 +96,14 @@ static int set_light_backlight(struct light_device_t* dev,
 	LOGV("%s brightness=%d color=0x%08x",
 		__func__,brightness, state->color);
 	pthread_mutex_lock(&g_lock);
-	g_backlight = brightness;
 	err = write_int(LCD_BACKLIGHT_FILE, brightness);
+	// if LCD backlight is on then button backlight should be on too
+	// Samsung has some annoying code that turns on buttons light only when touchscreen is pressed
+	// and it turns off automatically afterwards, leaving user hunting for buttons in the dark
+	{
+	    int on = is_lit (state);
+	    err = write_int (BUTTON_FILE, on?255:0);
+	}
 	pthread_mutex_unlock(&g_lock);
 	return err;
 }
