@@ -55,6 +55,11 @@ Issues and workarounds
 
 Latest fixes:
 
+2011-01-20
+Replaced lights with my own built from source
+The linking of backlight and button light is now done in lights module instead of java LightsService
+Replace copybit and s3cjpeg modules with ones from noobnl's samsung/common
+
 2011-01-19
 Switch to Nexus S libaudio. Much simpler, doesn't crash and Bluetooth headset shows some signs of life.
 
