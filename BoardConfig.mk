@@ -26,6 +26,7 @@
 #USE_CAMERA_STUB := true
 BOARD_OVERLAY_FORMAT_YCbRc_420_SP := true
 BUILD_PV_VIDEO_ENCODERS := 1
+BOARD_CAMERA_LIBRARIES := libcamera
 
 # inherit from the proprietary version
 -include vendor/samsung/GT-P1000/BoardConfigVendor.mk
@@ -44,6 +45,8 @@ TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_GLOBAL_CFLAGS += -mtune=cortex-a8
 TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a8
 ANDROID_ARM_LINKER := true
+
+BOARD_NO_RGBX_8888 := true
 
 # Sound related defines
 #BOARD_USES_ALSA_AUDIO := true

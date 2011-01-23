@@ -120,11 +120,28 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
     device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
 
+
+# These are the OpenMAX IL configuration files
+PRODUCT_COPY_FILES += \
+    device/samsung/common/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry
+
+# These are the OpenMAX IL modules
+PRODUCT_PACKAGES += \
+    libSEC_OMX_Core \
+    libOMX.SEC.AVC.Decoder \
+    libOMX.SEC.M4V.Decoder \
+    libOMX.SEC.M4V.Encoder \
+    libOMX.SEC.AVC.Encoder
+
 # Misc other modules
 PRODUCT_PACKAGES += \
     copybit.s5pc110 \
     lights.s5pc110 \
-    akmd
+    akmd \
+    sec_mm \
+    libs3cjpeg \
+    libcamera \
+    libstagefrighthw
 
 $(call inherit-product, build/target/product/full.mk)
 

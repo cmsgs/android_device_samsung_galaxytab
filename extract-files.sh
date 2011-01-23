@@ -81,9 +81,6 @@ lib/libglslcompiler.so
 bin/killmediaserver
 bin/notified_event
 lib/libarccamera.so
-lib/libcamera_client.so
-lib/libcamera.so
-lib/libcameraservice.so
 lib/libseccameraadaptor.so
 lib/libseccamera.so
 cameradata/datapattern_420sp.yuv
@@ -97,8 +94,6 @@ lib/libtvout_jni.so
 lib/libedid.so
 lib/libddc.so
 bin/tvoutserver
-lib/hw/gralloc.default.so
-lib/hw/gralloc.s5pc110.so
 bin/playlpm
 bin/charging_mode
 lib/libQmageDecoder.so
@@ -174,8 +169,7 @@ done
 
 PRODUCT_COPY_FILES := \
     vendor/samsung/__DEVICE__/proprietary/lib/libsecril-client.so:obj/lib/libsecril-client.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:obj/lib/libcamera.so
+    vendor/samsung/__DEVICE__/proprietary/lib/libtvout.so:obj/lib/libtvout.so
 
 #
 # RIL
@@ -239,8 +233,24 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libPVRScopeServices.so:system/lib/libPVRScopeServices.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libsrv_um.so:system/lib/libsrv_um.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libsrv_init.so:system/lib/libsrv_init.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libglslcompiler.so:system/lib/libglslcompiler.so
+    vendor/samsung/__DEVICE__/proprietary/lib/libglslcompiler.so:system/lib/libglslcompiler.so \
+    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so
 
+#PRODUCT_COPY_FILES += \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/bin/pvrsrvinit:system/bin/pvrsrvinit \
+#    vendor/samsung/__DEVICE__/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/egl/libEGL_POWERVR_SGX540_120.so:system/lib/egl/libEGL_POWERVR_SGX540_120.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so:system/lib/egl/libGLESv1_CM_POWERVR_SGX540_120.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/egl/libGLESv2_POWERVR_SGX540_120.so:system/lib/egl/libGLESv2_POWERVR_SGX540_120.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libIMGegl.so:system/lib/libIMGegl.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libpvrANDROID_WSEGL.so:system/lib/libpvrANDROID_WSEGL.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libpvr2d.so:system/lib/libpvr2d.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libPVRScopeServices.so:system/lib/libPVRScopeServices.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libusc.so:system/lib/libusc.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libsrv_um.so:system/lib/libsrv_um.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libsrv_init.so:system/lib/libsrv_init.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/libglslcompiler.so:system/lib/libglslcompiler.so \
+#    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so
 
 #
 # Samsung binary crap
@@ -255,15 +265,10 @@ PRODUCT_COPY_FILES += \
 #
 PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libarccamera.so:system/lib/libarccamera.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libcamera_client.so:system/lib/libcamera_client.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/libcamera.so:system/lib/libcamera.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libseccameraadaptor.so:system/lib/libseccameraadaptor.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libseccamera.so:system/lib/libseccamera.so \
     vendor/samsung/__DEVICE__/proprietary/cameradata/datapattern_420sp.yuv:system/cameradata/datapattern_420sp.yuv \
     vendor/samsung/__DEVICE__/proprietary/cameradata/datapattern_front_420sp.yuv:system/cameradata/datapattern_front_420sp.yuv
-
-# failing to load zygote with this one, what is missing?
-#    vendor/samsung/__DEVICE__/proprietary/lib/libcameraservice.so:system/lib/libcameraservice.so \
 
 #
 # TVOUT
@@ -279,12 +284,6 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libddc.so:system/lib/libddc.so \
     vendor/samsung/__DEVICE__/proprietary/bin/tvoutserver:system/bin/tvoutserver
 
-#
-# Hw support
-#
-PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.default.so:system/lib/hw/gralloc.default.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so
 #
 # Files for battery charging screen
 #
