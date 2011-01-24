@@ -234,7 +234,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libsrv_um.so:system/lib/libsrv_um.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libsrv_init.so:system/lib/libsrv_init.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libglslcompiler.so:system/lib/libglslcompiler.so \
-    vendor/samsung/__DEVICE__/proprietary/crespo_egl/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so
+    vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so
 
 #PRODUCT_COPY_FILES += \
 #    vendor/samsung/__DEVICE__/proprietary/crespo_egl/bin/pvrsrvinit:system/bin/pvrsrvinit \
