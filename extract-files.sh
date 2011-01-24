@@ -214,8 +214,7 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_2G.txt:system/etc/wifi/nvram_net_2G.txt \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_lna.txt:system/etc/wifi/nvram_net_lna.txt \
     vendor/samsung/__DEVICE__/proprietary/etc/wifi/nvram_net_nolna.txt:system/etc/wifi/nvram_net_nolna.txt \
-    vendor/samsung/__DEVICE__/proprietary/bin/mfgloader:system/bin/mfgloader \
-    vendor/samsung/__DEVICE__/proprietary/etc/wifi.conf:system/etc/wifi.conf
+    vendor/samsung/__DEVICE__/proprietary/bin/mfgloader:system/bin/mfgloader
 
 #
 # Graphics/GL driver

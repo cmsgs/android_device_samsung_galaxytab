@@ -35,7 +35,7 @@ $(call inherit-product-if-exists, vendor/samsung/GT-P1000/GT-P1000-vendor.mk)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=200 \
-    ro.sf.hwrotation=90 \
+    ro.sf.hwrotation=0 \
     rild.libpath=/system/lib/libsec-ril.so \
     rild.libargs=-d[SPACE]/dev/ttyS0 \
     wifi.interface=eth0 \
@@ -136,7 +136,9 @@ PRODUCT_PACKAGES += \
 # Misc other modules
 PRODUCT_PACKAGES += \
     copybit.s5pc110 \
-    lights.s5pc110 \
+    overlay.s5pc110 \
+    lights.$(TARGET_BOARD_PLATFORM) \
+    sensors.$(TARGET_BOARD_PLATFORM) \
     akmd \
     sec_mm \
     libs3cjpeg \
@@ -148,6 +150,7 @@ $(call inherit-product, build/target/product/full.mk)
 PRODUCT_NAME := full_galaxytab
 PRODUCT_DEVICE := GT-P1000
 PRODUCT_MODEL := GT-P1000
+PRODUCT_BOARD := p1
 PRODUCT_BRAND := Samsung
 PRODUCT_MANUFACTURER := Samsung
 TARGET_IS_GALAXYS := true
