@@ -1,3 +1,5 @@
+ifeq ($(BOARD_USES_GALAXYTAB_SENSORS),true)
+
 LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 LOCAL_MODULE := sensors.$(TARGET_BOARD_PLATFORM)
@@ -7,3 +9,5 @@ LOCAL_SRC_FILES := sensors.c
 LOCAL_SHARED_LIBRARIES := liblog libcutils
 LOCAL_PRELINK_MODULE := false
 include $(BUILD_SHARED_LIBRARY)
+
+endif
