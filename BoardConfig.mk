@@ -56,7 +56,6 @@ BOARD_USES_GALAXYTAB_AUDIO := true
 
 BOARD_USES_GALAXYTAB_SENSORS := true
 BOARD_USES_GALAXYTAB_LIGHTS := true
-
 BOARD_USES_NEXUS_S_LIBS := true
 BOARD_USES_OVERLAY := true
 BOARD_USES_COPYBIT := true
@@ -75,6 +74,7 @@ WIFI_DRIVER_FW_AP_PATH := "/system/etc/wifi/bcm4329_aps.bin"
 WIFI_DRIVER_MODULE_ARG := "firmware_path=/system/etc/wifi/bcm4329_sta.bin nvram_path=/system/etc/wifi/nvram_net.txt dhd_watchdog_ms=10 dhd_poll=1"
 WIFI_IFACE_DIR := "/data/misc/wifi"
 CONFIG_DRIVER_WEXT := true
+BOARD_WEXT_NO_COMBO_SCAN := true
 
 # Bluetooth related defines
 BOARD_HAVE_BLUETOOTH_BCM := true

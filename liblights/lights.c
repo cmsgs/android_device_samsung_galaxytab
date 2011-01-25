@@ -45,7 +45,7 @@ static int write_int (const char* path, int value) {
 	int fd;
 	static int already_warned = 0;
 
-	fd = open(path, O_RDWR);
+	fd = open(path, O_WRONLY);
 	if (fd < 0) {
 		if (already_warned == 0) {
 			LOGE("write_int failed to open %s\n", path);

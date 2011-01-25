@@ -137,8 +137,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     copybit.s5pc110 \
     overlay.s5pc110 \
-    lights.$(TARGET_BOARD_PLATFORM) \
-    sensors.$(TARGET_BOARD_PLATFORM) \
+    lights.s5pc110 \
+    sensors.s5pc110 \
     akmd \
     sec_mm \
     libs3cjpeg \
