@@ -58,10 +58,10 @@ int ProximitySensor::enable(int32_t, int en) {
     int newState = en ? 1 : 0;
     int err = 0;
     if (newState != mEnabled) {
-        mEnabled = newState;
-        if (en) {
+        if (newState) {
             setInitialState();
         }
+        mEnabled = newState;
     }
     return err;
 }
@@ -72,6 +72,7 @@ bool ProximitySensor::hasPendingEvents() const {
 
 int ProximitySensor::readEvents(sensors_event_t* data, int count)
 {
+    LOGD("ProximitySensor::readEvents");
     if (count < 1)
         return -EINVAL;
     

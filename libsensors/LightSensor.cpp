@@ -57,28 +57,40 @@ so it takes 180ms to read effin sensor
 /*****************************************************************************/
 
 LightSensor::LightSensor()
-    : SensorBase(LIGHT_SENSOR_FILE, NULL),
+    : SensorBase(NULL, NULL),
       mEnabled(0),
       mExtraDelay(0),
-      mHasPendingEvent(false)
+      mPendingEvents(0),
+      mPushFD(-1)
 {
     mPendingEvent.version = sizeof(sensors_event_t);
     mPendingEvent.sensor = ID_L;
     mPendingEvent.type = SENSOR_TYPE_LIGHT;
     memset(mPendingEvent.data, 0, sizeof(mPendingEvent.data));
 
-    open_device();
+    int sv[2];
+    pipe(sv);
+    data_fd = sv[0];
+    mPushFD = sv[1];
 
     enable(0, 1);
 }
 
 LightSensor::~LightSensor() {
+    if (mPushFD >= 0)
+    {
+        close(mPushFD);
+        mPushFD = -1;
+    }
+    if (data_fd)
+    {
+        close(data_fd);
+        data_fd = -1;
+    }
 }
 
 int LightSensor::setInitialState() {
-    mPendingEvent.light = read();
-    mPendingEvent.timestamp = getTimestamp();
-    mHasPendingEvent = true;
+    read();
     return 0;
 }
 
@@ -109,34 +121,51 @@ int LightSensor::enable(int32_t, int en) {
 }
 
 bool LightSensor::hasPendingEvents() const {
-    return mHasPendingEvent;
+    return (mPendingEvents > 0);
 }
 
 int LightSensor::readEvents(sensors_event_t* data, int count)
 {
     if (count < 1)
         return -EINVAL;
+    int rd = 0;
 
-    if (mHasPendingEvent) {
-        *data = mPendingEvent;
-        mHasPendingEvent = false;
-        return mEnabled ? 1 : 0;
+    {
+        android::Mutex::Autolock lock(mLock);
+        while (count && mPendingEvents) {
+            unsigned int l;
+            ::read(data_fd, (void *)&l, sizeof(l));
+            mPendingEvent.light = (float)l;
+            mPendingEvent.timestamp = getTimestamp();
+            *data = mPendingEvent;
+            mPendingEvents--;
+            count--;
+            data++;
+            rd++;
+        }
     }
 
-    return 0;
+    return mEnabled ? rd : 0;
 }
 
 float
 LightSensor::read(void)
 {
-    close(dev_fd);
-    dev_fd = open(dev_name, O_RDONLY);
+    int fd;
     char buf[8];
+    fd = open(LIGHT_SENSOR_FILE, O_RDONLY);
     ssize_t r;
-    r = ::read(dev_fd, (void *)buf, 7); // this probably takes 180ms
+    r = ::read(fd, (void *)buf, 7); // this probably takes 180ms
+    close(fd);
     buf[r] = 0;
     unsigned int l;
     l = strtoul(buf, NULL, 10);
+    int w;
+    w = ::write(mPushFD, (void *)&l, sizeof(l));
+    {
+        android::Mutex::Autolock lock(mLock);
+        mPendingEvents++;
+    }
     return (float)l;
 }
 
@@ -144,10 +173,7 @@ void
 LightSensor::readLoop(void)
 {
     while (bReaderRunning) {
-        // so maybe there is some race here, who cares
-        mPendingEvent.light = read();
-        mPendingEvent.timestamp = getTimestamp();
-        mHasPendingEvent = true;
+        read();
         usleep(mExtraDelay);
     }
 }

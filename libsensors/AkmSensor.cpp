@@ -25,6 +25,7 @@
 #include "ak8973b.h"
 
 #include <cutils/log.h>
+#include <cutils/properties.h>
 
 #include "AkmSensor.h"
 
@@ -137,6 +138,8 @@ int AkmSensor::enable(int32_t handle, int en)
 
     if ((uint32_t(newState)<<what) != (mEnabled & (1<<what))) {
         if (!mEnabled) {
+            // start akmd
+            property_set("ctl.start", "akmd");
             open_device();
         }
         int cmd;
@@ -156,6 +159,8 @@ int AkmSensor::enable(int32_t handle, int en)
         }
         if (!mEnabled) {
             close_device();
+            // stop akmd
+            property_set("ctl.stop", "akmd");
         }
     }
     return err;

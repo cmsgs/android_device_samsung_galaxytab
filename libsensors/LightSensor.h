@@ -22,6 +22,7 @@
 #include <sys/cdefs.h>
 #include <sys/types.h>
 #include <pthread.h>
+#include <utils/threads.h>
 
 #include "nusensors.h"
 #include "SensorBase.h"
@@ -35,9 +36,11 @@ class LightSensor : public SensorBase {
     int mEnabled;
     unsigned int mExtraDelay; // extra delay over 180ms in microseconds
     sensors_event_t mPendingEvent;
-    volatile bool mHasPendingEvent;
+    mutable android::Mutex mLock;
+    volatile unsigned int mPendingEvents;
     pthread_t mReaderThread;
     volatile bool bReaderRunning;
+    int mPushFD;
 
     int setInitialState();
     float read(void);
