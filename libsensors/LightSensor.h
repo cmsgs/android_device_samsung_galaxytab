@@ -21,6 +21,7 @@
 #include <errno.h>
 #include <sys/cdefs.h>
 #include <sys/types.h>
+#include <pthread.h>
 
 #include "nusensors.h"
 #include "SensorBase.h"
@@ -32,12 +33,14 @@ struct input_event;
 
 class LightSensor : public SensorBase {
     int mEnabled;
-    InputEventCircularReader mInputReader;
+    unsigned int mExtraDelay; // extra delay over 180ms in microseconds
     sensors_event_t mPendingEvent;
-    bool mHasPendingEvent;
+    volatile bool mHasPendingEvent;
+    pthread_t mReaderThread;
+    volatile bool bReaderRunning;
 
-    float indexToValue(size_t index) const;
     int setInitialState();
+    float read(void);
 
 public:
             LightSensor();
@@ -45,6 +48,8 @@ public:
     virtual int readEvents(sensors_event_t* data, int count);
     virtual bool hasPendingEvents() const;
     virtual int enable(int32_t handle, int enabled);
+    virtual int setDelay(int32_t handle, int64_t ns);
+    void readLoop(void);
 };
 
 /*****************************************************************************/

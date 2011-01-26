@@ -49,15 +49,10 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
  * The SENSORS Module
  */
 
-/* the CM3602 is a binary proximity sensor that triggers around 9 cm on
- * this hardware */
-#define PROXIMITY_THRESHOLD_CM  9.0f
-
 /*****************************************************************************/
 
 #define AKM_DEVICE_NAME     "/dev/akm8973_aot"
 #define CM_DEVICE_NAME      "/dev/cm3602"
-#define LS_DEVICE_NAME      "/dev/lightsensor"
 
 #define EVENT_TYPE_ACCEL_X          ABS_X
 #define EVENT_TYPE_ACCEL_Y          ABS_Z

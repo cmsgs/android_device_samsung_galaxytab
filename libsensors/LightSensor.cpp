@@ -20,20 +20,46 @@
 #include <poll.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <stdlib.h>
 #include <sys/select.h>
-
-#include <linux/lightsensor.h>
 
 #include <cutils/log.h>
 
 #include "LightSensor.h"
 
+// lightsensor_file_illuminance is current value
+// lightsensor_file_cmd powers the sensor on but reading file state does that too
+#define LIGHT_SENSOR_FILE "/sys/class/lightsensor/switch_cmd/lightsensor_file_state"
+
+#if 0
+this is how classy the lightsensor code in kernel is
+so it takes 180ms to read effin sensor
+
+	if((bh1721_write_command(chip->client, &POWER_ON))>0)
+		light_enable = ON;
+	bh1721_write_command(chip->client, &H_RESOLUTION_2);
+
+	/* Maximum measurement time */
+	msleep(180);
+	bh1721_read_value(chip->client, chip->illuminance_data);
+	if((bh1721_write_command(chip->client, &POWER_DOWN))>0)
+		light_enable = OFF;
+	result = chip->illuminance_data[0] << 8 | chip->illuminance_data[1];
+	result = (result*10)/12;
+	
+	/* apply hysteresis */
+	result = get_next_level(result);
+	return sprintf(buf, "%d\n", result);
+#endif
+
+
+
 /*****************************************************************************/
 
 LightSensor::LightSensor()
-    : SensorBase(LS_DEVICE_NAME, "lightsensor-level"),
+    : SensorBase(LIGHT_SENSOR_FILE, NULL),
       mEnabled(0),
-      mInputReader(4),
+      mExtraDelay(0),
       mHasPendingEvent(false)
 {
     mPendingEvent.version = sizeof(sensors_event_t);
@@ -41,52 +67,43 @@ LightSensor::LightSensor()
     mPendingEvent.type = SENSOR_TYPE_LIGHT;
     memset(mPendingEvent.data, 0, sizeof(mPendingEvent.data));
 
-     open_device();
+    open_device();
 
-    int flags = 0;
-    if (!ioctl(dev_fd, LIGHTSENSOR_IOCTL_GET_ENABLED, &flags)) {
-        if (flags) {
-            mEnabled = 1;
-            setInitialState();
-        }
-    }
-
-    if (!mEnabled) {
-        close_device();
-    }
+    enable(0, 1);
 }
 
 LightSensor::~LightSensor() {
 }
 
 int LightSensor::setInitialState() {
-    struct input_absinfo absinfo;
-    if (!ioctl(data_fd, EVIOCGABS(EVENT_TYPE_LIGHT), &absinfo)) {
-        mPendingEvent.light = indexToValue(absinfo.value);
-        mHasPendingEvent = true;
-    }
+    mPendingEvent.light = read();
+    mPendingEvent.timestamp = getTimestamp();
+    mHasPendingEvent = true;
     return 0;
 }
 
+static void *jumper(void *arg)
+{
+    ((LightSensor *)arg)->readLoop();
+    return NULL;
+}
+
 int LightSensor::enable(int32_t, int en) {
-    int flags = en ? 1 : 0;
+    int nNewState = en ? 1 : 0;
     int err = 0;
-    if (flags != mEnabled) {
-        if (!mEnabled) {
-            open_device();
+    if (nNewState != mEnabled) {
+        if (nNewState)
+        {
+            setInitialState();
+            bReaderRunning = true;
+            pthread_create(&mReaderThread, NULL, jumper, (void *)this);
         }
-        err = ioctl(dev_fd, LIGHTSENSOR_IOCTL_ENABLE, &flags);
-        err = err<0 ? -errno : 0;
-        LOGE_IF(err, "LIGHTSENSOR_IOCTL_ENABLE failed (%s)", strerror(-err));
-        if (!err) {
-            mEnabled = en ? 1 : 0;
-            if (en) {
-                setInitialState();
-            }
+        else
+        {
+            bReaderRunning = false;
+            pthread_join(mReaderThread, NULL);
         }
-        if (!mEnabled) {
-            close_device();
-        }
+        mEnabled = nNewState;
     }
     return err;
 }
@@ -101,54 +118,49 @@ int LightSensor::readEvents(sensors_event_t* data, int count)
         return -EINVAL;
 
     if (mHasPendingEvent) {
-        mHasPendingEvent = false;
-        mPendingEvent.timestamp = getTimestamp();
         *data = mPendingEvent;
+        mHasPendingEvent = false;
         return mEnabled ? 1 : 0;
     }
 
-    ssize_t n = mInputReader.fill(data_fd);
-    if (n < 0)
-        return n;
-
-    int numEventReceived = 0;
-    input_event const* event;
-
-    while (count && mInputReader.readEvent(&event)) {
-        int type = event->type;
-        if (type == EV_ABS) {
-            if (event->code == EVENT_TYPE_LIGHT) {
-                if (event->value != -1) {
-                    // FIXME: not sure why we're getting -1 sometimes
-                    mPendingEvent.light = indexToValue(event->value);
-                }
-            }
-        } else if (type == EV_SYN) {
-            mPendingEvent.timestamp = timevalToNano(event->time);
-            if (mEnabled) {
-                *data++ = mPendingEvent;
-                count--;
-                numEventReceived++;
-            }
-        } else {
-            LOGE("LightSensor: unknown event (type=%d, code=%d)",
-                    type, event->code);
-        }
-        mInputReader.next();
-    }
-
-    return numEventReceived;
+    return 0;
 }
 
-float LightSensor::indexToValue(size_t index) const
+float
+LightSensor::read(void)
 {
-    static const float luxValues[10] = {
-            10.0, 160.0, 225.0, 320.0, 640.0,
-            1280.0, 2600.0, 5800.0, 8000.0, 10240.0
-    };
-
-    const size_t maxIndex = sizeof(luxValues)/sizeof(*luxValues) - 1;
-    if (index > maxIndex)
-        index = maxIndex;
-    return luxValues[index];
+    close(dev_fd);
+    dev_fd = open(dev_name, O_RDONLY);
+    char buf[8];
+    ssize_t r;
+    r = ::read(dev_fd, (void *)buf, 7); // this probably takes 180ms
+    buf[r] = 0;
+    unsigned int l;
+    l = strtoul(buf, NULL, 10);
+    return (float)l;
 }
+
+void
+LightSensor::readLoop(void)
+{
+    while (bReaderRunning) {
+        // so maybe there is some race here, who cares
+        mPendingEvent.light = read();
+        mPendingEvent.timestamp = getTimestamp();
+        mHasPendingEvent = true;
+        usleep(mExtraDelay);
+    }
+}
+
+int
+LightSensor::setDelay(int32_t handle, int64_t ns)
+{
+    ns /= 1000;
+    if (ns > 180000)
+    {
+        mExtraDelay = (unsigned int)ns - 180000;
+    }
+    return 0;
+}
+
+
