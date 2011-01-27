@@ -52,7 +52,6 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 /*****************************************************************************/
 
 #define AKM_DEVICE_NAME     "/dev/akm8973_aot"
-#define CM_DEVICE_NAME      "/dev/cm3602"
 
 #define EVENT_TYPE_ACCEL_X          ABS_X
 #define EVENT_TYPE_ACCEL_Y          ABS_Z
@@ -74,13 +73,16 @@ int init_nusensors(hw_module_t const* module, hw_device_t** device);
 #define EVENT_TYPE_LIGHT            ABS_MISC
 
 // 720 LSG = 1G
-#define LSG                         (720.0f)
+//#define LSG                         (720.0f)
+// 740 seems to return 9.81 unless gravity at my place is off
+#define LSG                         (740.0f)
+
 
 
 // conversion of acceleration data to SI units (m/s^2)
 #define CONVERT_A                   (GRAVITY_EARTH / LSG)
 #define CONVERT_A_X                 (-CONVERT_A)
-#define CONVERT_A_Y                 (CONVERT_A)
+#define CONVERT_A_Y                 (-CONVERT_A)
 #define CONVERT_A_Z                 (-CONVERT_A)
 
 // conversion of magnetic data to uT units
