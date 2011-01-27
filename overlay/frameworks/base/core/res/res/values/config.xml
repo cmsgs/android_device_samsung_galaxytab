@@ -38,14 +38,10 @@
 
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>5</item>
         <item>22</item>
         <item>75</item>
-        <item>220</item>
         <item>800</item>
         <item>2800</item>
-        <item>4800</item>
-        <item>6000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -53,15 +49,11 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>48</item>   <!-- 0..4 -->
-        <item>48</item>   <!-- 5..21 -->
+        <item>48</item>   <!-- 0..21 -->
         <item>96</item>   <!-- 22..74 50 lux is family living room-->
-        <item>120</item>  <!-- 75..219 100 lux is very dark overcast day-->
-        <item>128</item>  <!-- 220..799 320-500 is office lighting, 400 sunrise/sunset -->
+        <item>128</item>  <!-- 75..799 100 lux is very dark overcast day 320-500 is office lighting, 400 sunrise/sunset -->
         <item>192</item>  <!-- 800..2799 1000 overcast day, typical studio lighting -->
-        <item>255</item>  <!-- 2800..4799 -->
-        <item>255</item>  <!-- 4800..5999 -->
-        <item>255</item>  <!-- 6000..INF -->
+        <item>255</item>  <!-- 2800..INF -->
     </integer-array>
 
     <!-- Array of output values for button backlight corresponding to the LUX values
@@ -69,10 +61,6 @@
          than the size of the config_autoBrightnessLevels array.
     -->
     <integer-array name="config_autoBrightnessButtonBacklightValues">
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
-        <item>255</item>
         <item>255</item>
         <item>255</item>
         <item>255</item>
@@ -86,10 +74,6 @@
          GalaxyS has no keyboard so all values are zero.
     -->
     <integer-array name="config_autoBrightnessKeyboardBacklightValues">
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
-        <item>0</item>
         <item>0</item>
         <item>0</item>
         <item>0</item>
