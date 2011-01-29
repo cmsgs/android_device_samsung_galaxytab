@@ -51,13 +51,9 @@ Issues and workarounds
     Try rebooting
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
-* 3G data
-    It seems 3G data starts but the default route doesnt seem to get set
-    To workaround it, adb shell and set default route
-    route add default gw `getprop net.pdp0.gw` dev pdp0
-    But it doesn't seem to fix the problem completely
-
 Changelog:
+2011-01-29 Fixed 3G data
+
 2011-01-28 First beta release
 
 
