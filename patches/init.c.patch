@@ -1,0 +1,41 @@
+--- init.c.old	2011-01-31 00:34:08.000000000 -0800
++++ init.c	2011-01-31 00:34:02.000000000 -0800
+@@ -659,6 +659,7 @@
+     int property_set_fd_init = 0;
+     int signal_fd_init = 0;
+     int keychord_fd_init = 0;
++    char *init_rc = "/init.rc";
+ 
+     if (!strcmp(basename(argv[0]), "ueventd"))
+         return ueventd_main(argc, argv);
+@@ -689,9 +690,28 @@
+          */
+     open_devnull_stdio();
+     log_init();
+-    
++
++    {
++	int fd = open("/proc/cmdline", O_RDONLY);
++	char cmdline[1024];
++	int l = read(fd, cmdline, 1024);
++	close(fd);
++	if (l >= 1024) l = 1023;
++	cmdline[l] = 0;
++	char *bootmode = strstr(cmdline, "bootmode=");
++	if (bootmode)
++	{
++	    bootmode += 9;
++	    int n = atoi(bootmode);
++	    if (2 == n)
++	    {
++		init_rc = "/recovery.rc";
++	    }
++	}
++    }
++
+     INFO("reading config file\n");
+-    init_parse_config_file("/init.rc");
++    init_parse_config_file(init_rc);
+ 
+     /* pull the kernel commandline and ramdisk properties file in */
+     import_kernel_cmdline(0);
