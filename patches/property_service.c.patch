@@ -1,0 +1,10 @@
+--- property_service.c.old	2011-01-30 20:18:09.000000000 -0800
++++ property_service.c	2011-01-30 20:18:05.000000000 -0800
+@@ -66,6 +66,7 @@
+     { "persist.radio",    AID_RADIO,    0 },
+     { "net.dns",          AID_RADIO,    0 },
+     { "net.gannet",       AID_RADIO,    0 },
++    { "net.pdp0",         AID_RADIO,    0 },
+     { "net.",             AID_SYSTEM,   0 },
+     { "dev.",             AID_SYSTEM,   0 },
+     { "runtime.",         AID_SYSTEM,   0 },
