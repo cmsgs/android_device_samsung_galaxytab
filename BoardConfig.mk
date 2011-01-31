@@ -95,14 +95,6 @@ BOARD_EGL_CFG := vendor/samsung/GT-P1000/proprietary/lib/egl/egl.cfg
 # emmc storage
 BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
 
-#GPS
-# use coolya's gps-nmea instead of samsungs crap
-BOARD_USES_NMEA_GPS := true
-
-#BOARD_GPS_LIBRARIES := libsecgps libsecril-client
-# use opensores stuff from coolya
-BOARD_GPS_LIBRARIES := libgps-nmea
-
 
 # Device related defines
 #TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
