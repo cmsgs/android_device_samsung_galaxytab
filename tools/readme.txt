@@ -52,6 +52,11 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
 Changelog:
+2011-01-31 GPS should work now
+    Used Nexus S GPS binaries
+    Switched to init compiled from sources
+    Switched to CWM 3.x (still very broken)
+
 2011-01-29 Fixed 3G data
 
 2011-01-28 First beta release

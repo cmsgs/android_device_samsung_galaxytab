@@ -301,9 +301,9 @@ status_t AudioHardware::setMode(int mode)
                 struct mixer_ctl *ctl= mixer_get_control(mMixer, "Playback Path", 0);
                 TRACE_DRIVER_OUT
                 if (ctl != NULL) {
-                    LOGV("setMode() reset Playback Path to RCV");
+                    LOGV("setMode() reset Playback Path to SPK");
                     TRACE_DRIVER_IN(DRV_MIXER_SEL)
-                    mixer_ctl_select(ctl, "RCV");
+                    mixer_ctl_select(ctl, "SPK");
                     TRACE_DRIVER_OUT
                 }
             }
@@ -430,7 +430,7 @@ status_t AudioHardware::setVoiceVolume(float volume)
         if (ctl != NULL) {
             LOGV("setVoiceVolume() set Playback Spkr Volume to %f", volume);
             TRACE_DRIVER_IN(DRV_MIXER_SET)
-            mixer_ctl_set(ctl, volume * 5);
+            mixer_ctl_set(ctl, volume * 100);
             TRACE_DRIVER_OUT
         }
     }
@@ -453,7 +453,7 @@ status_t AudioHardware::setMasterVolume(float volume)
         if (ctl != NULL) {
             LOGV("setMasterVolume() set Playback Volume to %f", volume);
             TRACE_DRIVER_IN(DRV_MIXER_SET)
-            mixer_ctl_set(ctl, volume * 5);
+            mixer_ctl_set(ctl, volume * 100);
             TRACE_DRIVER_OUT
             return NO_ERROR;
         }
