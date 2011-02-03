@@ -3,14 +3,11 @@
 HERE=`pwd`
 DEPTH=../../../..
 
-mv -v ${DEPTH}/initramfs/galaxytab/.git .
-
-cd ${DEPTH}/kernel-tab
-source env.sh
-cd Kernel
-MAKE_KERNEL
+cd ${DEPTH}/kernel-galaxytab
+source build.sh
+KERNEL_DEFCONFIG
+KERNEL_BUILD
 cd ${HERE}
 
-mv -v .git ${DEPTH}/initramfs/galaxytab/
-cp -v ${DEPTH}/kernel-tab/Kernel/arch/arm/boot/zImage .
+cp -v ${DEPTH}/kernel-galaxytab/arch/arm/boot/zImage .
 

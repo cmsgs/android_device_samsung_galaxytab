@@ -52,6 +52,10 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
 Changelog:
+2011-02-03 New kernel from Update1
+    Refreshed repo and rebuild with latest
+    added codeworkx's brcm_patchram_plus fix that should hopefully fix bluetooth initialization
+    
 2011-01-31 GPS should work now
     Used Nexus S GPS binaries
     Switched to init compiled from sources

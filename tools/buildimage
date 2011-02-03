@@ -149,5 +149,5 @@ umount ./system
 losetup -d /dev/loop0
 sync
 
-cp ${DEPTH}/kernel-tab/Kernel/arch/arm/boot/zImage .
+cp ${DEPTH}/kernel-galaxytab/arch/arm/boot/zImage .
 
