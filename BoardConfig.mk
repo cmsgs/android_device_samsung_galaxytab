@@ -23,11 +23,6 @@
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 
-#USE_CAMERA_STUB := true
-BOARD_OVERLAY_FORMAT_YCbRc_420_SP := true
-BUILD_PV_VIDEO_ENCODERS := 1
-BOARD_CAMERA_LIBRARIES := libcamera
-
 # inherit from the proprietary version
 -include vendor/samsung/GT-P1000/BoardConfigVendor.mk
 
@@ -54,11 +49,21 @@ BOARD_NO_RGBX_8888 := true
 #ALSA_DEFAULT_SAMPLE_RATE := 44100
 BOARD_USES_GALAXYTAB_AUDIO := true
 
+BOARD_USES_FROYO_GRALLOC := true
 BOARD_USES_GALAXYTAB_SENSORS := true
 BOARD_USES_GALAXYTAB_LIGHTS := true
 BOARD_USES_NEXUS_S_LIBS := true
-BOARD_USES_OVERLAY := true
+BOARD_USES_OVERLAY := false
 BOARD_USES_COPYBIT := true
+
+USE_CAMERA_STUB := false
+BOARD_OVERLAY_FORMAT_YCbRc_420_SP := true
+BUILD_PV_VIDEO_ENCODERS := 1
+BOARD_CAMERA_LIBRARIES := libcamera
+BOARD_V4L2_DEVICE := /dev/video1
+BOARD_CAMERA_DEVICE := /dev/video0
+BOARD_SECOND_CAMERA_DEVICE := /dev/video2
+
 
 # For the FM Radio
 BOARD_HAVE_FM_RADIO := false

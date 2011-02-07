@@ -66,6 +66,8 @@ etc/wifi/nvram_net_nolna.txt
 etc/wifi.conf
 bin/mfgloader
 bin/pvrsrvinit
+lib/hw/gralloc.s5pc110.so
+lib/hw/copybit.s5pc110.so
 lib/egl/egl.cfg
 lib/egl/libEGL_POWERVR_SGX540_120.so
 lib/egl/libGLES_android.so
@@ -239,7 +241,8 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/__DEVICE__/proprietary/lib/libsrv_um.so:system/lib/libsrv_um.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libsrv_init.so:system/lib/libsrv_init.so \
     vendor/samsung/__DEVICE__/proprietary/lib/libglslcompiler.so:system/lib/libglslcompiler.so \
-    vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so
+    vendor/samsung/__DEVICE__/proprietary/lib/hw/gralloc.s5pc110.so:system/lib/hw/gralloc.s5pc110.so \
+    vendor/samsung/__DEVICE__/proprietary/lib/hw/copybit.s5pc110.so:system/lib/hw/copybit.s5pc110.so
 
 #PRODUCT_COPY_FILES += \
 #    vendor/samsung/__DEVICE__/proprietary/crespo_egl/bin/pvrsrvinit:system/bin/pvrsrvinit \

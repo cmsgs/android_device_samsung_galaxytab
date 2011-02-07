@@ -138,9 +138,9 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.AVC.Encoder
 
 # Misc other modules
+#    copybit.s5pc110 \
+#    overlay.s5pc110 \
 PRODUCT_PACKAGES += \
-    copybit.s5pc110 \
-    overlay.s5pc110 \
     lights.s5pc110 \
     sensors.s5pc110 \
     akmd \
