@@ -15,7 +15,3 @@ cd ${DEPTH}/bootable/recovery/minui
 patch -p0 < ${HERE}/graphics.c.patch
 cd ${HERE}
 
-cd ${DEPTH}/system/bluetooth/brcm_patchram_plus
-# fix hciattach startup problems
-patch -p0 < ${HERE}/brcm_patchram_plus.patch
-cd ${HERE}
