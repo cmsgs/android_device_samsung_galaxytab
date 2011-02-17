@@ -52,6 +52,12 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
 Changelog:
+2011-02-07
+    Refreshed repo and rebuilt.
+    Backed out codeworkx's bluetooth fix, it seems to make things worse. Added stopping and cleaning up hciattach if it fails. Now if Bluetooth start fails, just try starting it again.
+    Removed overlay and copybit built from source, they cant both be installed. Use binary copybit since the ones built from the source use wrong kernel headers. Camera shows some signs of life now.
+    Patched code that calls gralloc to remove usage flags not known by froyo gralloc.
+    
 2011-02-03 New kernel from Update1
     Refreshed repo and rebuild with latest
     added codeworkx's brcm_patchram_plus fix that should hopefully fix bluetooth initialization

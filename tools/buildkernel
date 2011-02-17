@@ -3,9 +3,19 @@
 HERE=`pwd`
 DEPTH=../../../..
 
+# copy missing recovery files
+
+OUTDIR=${DEPTH}/out/target/product/galaxytab
+cp -v ${OUTDIR}/obj/EXECUTABLES/recovery_intermediates/recovery ${OUTDIR}/root/sbin/recovery
+cp -rv ${DEPTH}/bootable/recovery/res ${OUTDIR}/root/
+
+DUMPKEY_JAR=${DEPTH}/out/host/linux-x86/framework/dumpkey.jar
+
+java -jar ${DUMPKEY_JAR} ${DEPTH}/build/target/product/security/testkey.x509.pem > ${OUTDIR}/root/res/keys
+
 cd ${DEPTH}/kernel-galaxytab
 source build.sh
-KERNEL_DEFCONFIG
+#KERNEL_DEFCONFIG
 KERNEL_BUILD
 cd ${HERE}
 

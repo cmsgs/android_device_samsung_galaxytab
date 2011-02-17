@@ -25,8 +25,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
-PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/init.smdkc110.rc:root/init.smdkc110.rc
 
 ## (2) Also get non-open-source GSM-specific aspects if available
 $(call inherit-product-if-exists, vendor/samsung/GT-P1000/GT-P1000-vendor.mk)
@@ -79,7 +77,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     phone.ril.classname = com.android.internal.telephony.SamsungRIL
 
-
 DEVICE_PACKAGE_OVERLAYS += device/samsung/galaxytab/overlay
 
 # media profiles and capabilities spec
@@ -110,14 +107,54 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/samsung/galaxytab/prebuilt/usr/keylayout/p1_keyboard.kl:system/usr/keylayout/p1_keyboard.kl
 
-# prebuilt zImage
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/zImage:zImage
+    device/samsung/galaxytab/initramfs/init.smdkc110.rc:root/init.smdkc110.rc \
+    device/samsung/galaxytab/initramfs/init.rc:root/init.rc \
+    device/samsung/galaxytab/initramfs/lpm.rc:root/lpm.rc \
+    device/samsung/galaxytab/initramfs/recovery.rc:root/recovery.rc \
+    device/samsung/galaxytab/initramfs/ueventd.rc:root/ueventd.rc
 
-# kernel modules
+# prebuilt zImage
+#PRODUCT_COPY_FILES += \
+#    kernel-galaxytab/arch/arm/boot/zImage:zImage
+
+# this is not a real kernel, just empty file, but it is needed so recovery is copied to out/root
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/samsung/galaxytab/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9/tun.ko:system/lib/modules/2.6.32.9/tun.ko
+    $(LOCAL_KERNEL):kernel
+
+# kernel modules we built
+PRODUCT_COPY_FILES += \
+    kernel-galaxytab/fs/cifs/cifs.ko:system/lib/modules/2.6.32.9/cifs.ko \
+    kernel-galaxytab/drivers/net/tun.ko:system/lib/modules/2.6.32.9/tun.ko
+
+# kernel modules we built
+PRODUCT_COPY_FILES += \
+    kernel-galaxytab/drivers/onedram/onedram.ko:root/lib/modules/onedram.ko \
+    kernel-galaxytab/drivers/svnet/svnet.ko:root/lib/modules/svnet.ko \
+    kernel-galaxytab/drivers/scsi/scsi_wait_scan.ko:root/lib/modules/scsi_wait_scan.ko \
+    kernel-galaxytab/drivers/modemctl/modemctl.ko:root/lib/modules/modemctl.ko \
+    kernel-galaxytab/drivers/misc/vibtonz/vibrator.ko:root/lib/modules/vibrator.ko \
+    kernel-galaxytab/drivers/bluetooth/bthid/bthid.ko:root/lib/modules/bthid.ko \
+    kernel-galaxytab/drivers/net/wireless/bcm4329/dhd.ko:root/lib/modules/dhd.ko
+
+# binary kernel modules we dont have sources for
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxytab/prebuilt/modules/pvrsrvkm.ko:root/modules/pvrsrvkm.ko \
+    device/samsung/galaxytab/prebuilt/modules/s3c_bc.ko:root/modules/s3c_bc.ko \
+    device/samsung/galaxytab/prebuilt/modules/s3c_lcd.ko:root/modules/s3c_lcd.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/j4fs.ko:root/lib/modules/j4fs.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/storage.ko:root/lib/modules/storage.ko \
+    device/samsung/galaxytab/prebuilt/lib/modules/param.ko:root/lib/modules/param.ko
 
 
 # These are the OpenMAX IL configuration files
@@ -128,6 +165,33 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
 
+ifdef INSTALL_GAPPS
+# for this to work extract gapps-gb-20110120-signed.zip to gapps directory and set INSTALL_GAPPS environment variable
+# copy google apps
+PRODUCT_COPY_FILES += \
+    device/samsung/galaxytab/gapps/app/CarHomeLauncher.apk:system/app/CarHomeLauncher.apk \
+    device/samsung/galaxytab/gapps/app/FOTAKill.apk:system/app/FOTAKill.apk \
+    device/samsung/galaxytab/gapps/app/GenieWidget.apk:system/app/GenieWidget.apk \
+    device/samsung/galaxytab/gapps/app/GoogleBackupTransport.apk:system/app/GoogleBackupTransport.apk \
+    device/samsung/galaxytab/gapps/app/GoogleCalendarSyncAdapter.apk:system/app/GoogleCalendarSyncAdapter.apk \
+    device/samsung/galaxytab/gapps/app/GoogleContactsSyncAdapter.apk:system/app/GoogleContactsSyncAdapter.apk \
+    device/samsung/galaxytab/gapps/app/GoogleFeedback.apk:system/app/GoogleFeedback.apk \
+    device/samsung/galaxytab/gapps/app/GooglePartnerSetup.apk:system/app/GooglePartnerSetup.apk \
+    device/samsung/galaxytab/gapps/app/GoogleQuickSearchBox.apk:system/app/GoogleQuickSearchBox.apk \
+    device/samsung/galaxytab/gapps/app/GoogleServicesFramework.apk:system/app/GoogleServicesFramework.apk \
+    device/samsung/galaxytab/gapps/app/LatinImeTutorial.apk:system/app/LatinImeTutorial.apk \
+    device/samsung/galaxytab/gapps/app/MarketUpdater.apk:system/app/MarketUpdater.apk \
+    device/samsung/galaxytab/gapps/app/MediaUploader.apk:system/app/MediaUploader.apk \
+    device/samsung/galaxytab/gapps/app/NetworkLocation.apk:system/app/NetworkLocation.apk \
+    device/samsung/galaxytab/gapps/app/OneTimeInitializer.apk:system/app/OneTimeInitializer.apk \
+    device/samsung/galaxytab/gapps/app/SetupWizard.apk:system/app/SetupWizard.apk \
+    device/samsung/galaxytab/gapps/app/Talk.apk:system/app/Talk.apk \
+    device/samsung/galaxytab/gapps/app/Vending.apk:system/app/Vending.apk \
+    device/samsung/galaxytab/gapps/etc/permissions/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml \
+    device/samsung/galaxytab/gapps/etc/permissions/features.xml:system/etc/permissions/features.xml \
+    device/samsung/galaxytab/gapps/framework/com.google.android.maps.jar:system/framework/com.google.android.maps.jar \
+    device/samsung/galaxytab/gapps/lib/libvoicesearch.so:system/lib/libvoicesearch.so
+endif
 
 # These are the OpenMAX IL modules
 PRODUCT_PACKAGES += \
@@ -136,6 +200,7 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.M4V.Decoder \
     libOMX.SEC.M4V.Encoder \
     libOMX.SEC.AVC.Encoder
+
 
 # Misc other modules
 #    copybit.s5pc110 \

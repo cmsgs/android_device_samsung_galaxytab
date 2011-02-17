@@ -28,6 +28,10 @@
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_KERNEL := true
+TARGET_NO_RECOVERY := true
+# it creates partition that is not mountable as ext4, wtf?
+#TARGET_USERIMAGES_USE_EXT4 := true
+#TARGET_RECOVERY_INITRC := device/samsung/galaxytab/initramfs/init.rc
 
 TARGET_BOARD := GT-P1000
 TARGET_BOARD_PLATFORM := s5pc110
@@ -102,9 +106,6 @@ BOARD_EMMC_DEVICE := /dev/block/mmcblk0p1
 
 
 # Device related defines
-#TARGET_PREBUILT_KERNEL := device/samsung/galaxys/kernel
-TARGET_NO_BUILD_WIFI := true
-TARGET_PREBUILT_MODULES := device/samsung/galaxytab/prebuilt/lib/modules/2.6.32.9
 BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
 BOARD_KERNEL_BASE := 0x02e00000
 
@@ -117,7 +118,9 @@ BOARD_USES_FFORMAT := true
 BOARD_BOOTIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00780000)
 BOARD_RECOVERYIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x00780000)
 BOARD_SYSTEMIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x14A00000)
-BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x04ac0000)
+#BOARD_SYSTEMIMAGE_MAX_SIZE := 346030080
+BOARD_SYSTEMIMAGE_PARTITION_SIZE := 346030080
+#BOARD_USERDATAIMAGE_MAX_SIZE := $(call image-size-from-data-size,0x04ac0000)
 # The size of a block that can be marked bad.
 BOARD_FLASH_BLOCK_SIZE := 131072
 
@@ -146,6 +149,7 @@ BOARD_SDCARD_DEVICE_SECONDARY := /dev/block/mmcblk0p1
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_SDCARD_DEVICE_INTERNAL := /dev/block/mmcblk0p1
 
+# redirect recovery stuff to root
 TARGET_RECOVERY_OUT := $(PRODUCT_OUT)/root
 TARGET_RECOVERY_ROOT_OUT := $(TARGET_RECOVERY_OUT)
 

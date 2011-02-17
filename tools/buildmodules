@@ -1,0 +1,12 @@
+#!/bin/bash
+
+HERE=`pwd`
+DEPTH=../../../..
+
+cd ${DEPTH}/kernel-galaxytab
+source build.sh
+KERNEL_DEFCONFIG
+KERNEL_BUILD_MODULES
+cd ${HERE}
+
+
