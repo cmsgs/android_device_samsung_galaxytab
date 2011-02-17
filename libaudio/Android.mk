@@ -1,4 +1,4 @@
-ifeq ($(BOARD_USES_GALAXYTAB_AUDIO),true)
+ifeq ($(TARGET_DEVICE),galaxytab)
 
 LOCAL_PATH:= $(call my-dir)
 

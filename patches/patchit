@@ -2,14 +2,6 @@
 HERE=`pwd`
 DEPTH=../../../..
 
-cd ${DEPTH}/system/core/init
-# add radio user so it can set net.pdp0 properties
-patch -p0 < ${HERE}/property_service.c.patch
-# use bootmode=2 to start recovery
-patch -p0 < ${HERE}/init.c.patch
-cd ${HERE}
-
-
 cd ${DEPTH}/bootable/recovery/minui
 # fix for 32bit fb
 patch -p0 < ${HERE}/graphics.c.patch

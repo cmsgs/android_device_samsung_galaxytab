@@ -52,6 +52,9 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
 Changelog:
+2011-02-17
+    Refreshed repo and rebuild
+    initramfs built from sources instead of checked in, still far from automated build tho ;-(
 2011-02-07
     Refreshed repo and rebuilt.
     Backed out codeworkx's bluetooth fix, it seems to make things worse. Added stopping and cleaning up hciattach if it fails. Now if Bluetooth start fails, just try starting it again.
