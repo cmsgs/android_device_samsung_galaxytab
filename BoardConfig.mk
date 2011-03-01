@@ -66,6 +66,7 @@ BOARD_V4L2_DEVICE := /dev/video1
 BOARD_CAMERA_DEVICE := /dev/video0
 BOARD_SECOND_CAMERA_DEVICE := /dev/video2
 
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 
 # For the FM Radio
 BOARD_HAVE_FM_RADIO := false

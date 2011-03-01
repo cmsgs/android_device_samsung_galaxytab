@@ -144,7 +144,7 @@ usr/keylayout/sec_jack.kl
 
 for FILE in $FILES; do
 #adb pull system/$FILE ../../../vendor/samsung/$DEVICE/proprietary/$FILE
-cp /mnt/safe/root/tab/system/JK5/$FILE ../../../vendor/samsung/$DEVICE/proprietary/$FILE
+cp /f/tab/system/JK5/$FILE ../../../vendor/samsung/$DEVICE/proprietary/$FILE
 done
 
 (cat << EOF) | sed s/__DEVICE__/$DEVICE/g > ../../../vendor/samsung/$DEVICE/$DEVICE-vendor-blobs.mk
@@ -264,9 +264,7 @@ PRODUCT_COPY_FILES += \
 # Samsung binary crap
 #
 PRODUCT_COPY_FILES += \
-    vendor/samsung/__DEVICE__/proprietary/bin/killmediaserver:system/bin/killmediaserver \
-    vendor/samsung/__DEVICE__/proprietary/bin/notified_event:system/bin/notified_event \
-    vendor/samsung/__DEVICE__/proprietary/bin/vold:system/bin/vold
+    vendor/samsung/__DEVICE__/proprietary/bin/killmediaserver:system/bin/killmediaserver
 
 #
 # camera

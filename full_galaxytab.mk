@@ -103,7 +103,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/galaxytab/prebuilt/etc/asound.conf:system/etc/asound.conf \
-    device/samsung/galaxytab/prebuilt/etc/vold.conf:system/etc/vold.conf \
     device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
     device/samsung/galaxytab/prebuilt/usr/keylayout/p1_keyboard.kl:system/usr/keylayout/p1_keyboard.kl
 

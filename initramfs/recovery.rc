@@ -50,8 +50,9 @@ loglevel 9
 
 # create mountpoints
     mkdir /mnt 0775 root system
-    mkdir /mnt/sdcard 0000 system system
-    mkdir /mnt/emmc 0000 system system
+    mkdir /sdcard 0000 system system
+    mkdir /emmc 0000 system system
+    mkdir /sd-ext 0000 system system
 
 # Create cgroup mount point for cpu accounting
     mkdir /acct

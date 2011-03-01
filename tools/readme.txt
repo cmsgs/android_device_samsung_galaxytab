@@ -52,6 +52,11 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
 Changelog:
+2011-03-01
+    Refreshed and merged latest frameworks etc from CM repo
+    Rebuilt everything
+    Use vold built from source
+
 2011-02-17
     Refreshed repo and rebuild
     initramfs built from sources instead of checked in, still far from automated build tho ;-(
