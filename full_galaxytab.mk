@@ -140,13 +140,13 @@ PRODUCT_COPY_FILES += \
     kernel-galaxytab/drivers/modemctl/modemctl.ko:root/lib/modules/modemctl.ko \
     kernel-galaxytab/drivers/misc/vibtonz/vibrator.ko:root/lib/modules/vibrator.ko \
     kernel-galaxytab/drivers/bluetooth/bthid/bthid.ko:root/lib/modules/bthid.ko \
-    kernel-galaxytab/drivers/net/wireless/bcm4329/dhd.ko:root/lib/modules/dhd.ko
+    kernel-galaxytab/drivers/net/wireless/bcm4329/dhd.ko:root/lib/modules/dhd.ko \
+    kernel-galaxytab/drivers/gpu/pvr/s3c_bc.ko:root/modules/s3c_bc.ko \
+    kernel-galaxytab/drivers/gpu/pvr/s3c_lcd.ko:root/modules/s3c_lcd.ko \
+    kernel-galaxytab/drivers/gpu/pvr/pvrsrvkm.ko:root/modules/pvrsrvkm.ko
 
 # binary kernel modules we dont have sources for
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/prebuilt/modules/pvrsrvkm.ko:root/modules/pvrsrvkm.ko \
-    device/samsung/galaxytab/prebuilt/modules/s3c_bc.ko:root/modules/s3c_bc.ko \
-    device/samsung/galaxytab/prebuilt/modules/s3c_lcd.ko:root/modules/s3c_lcd.ko \
     device/samsung/galaxytab/prebuilt/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
     device/samsung/galaxytab/prebuilt/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
     device/samsung/galaxytab/prebuilt/lib/modules/j4fs.ko:root/lib/modules/j4fs.ko \

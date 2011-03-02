@@ -52,6 +52,9 @@ Issues and workarounds
     If that doesnt help try "adb shell stop hciattach" Sometimes hciattach service gets stuck when starting.
 
 Changelog:
+2011-03-02
+    Added source modules for pvrsrvkm, s3c_bc and s3c_lcd to kernel sources and build them from scratch
+    Refreshed, merged and rebuilt, media scanner works again
 2011-03-01
     Refreshed and merged latest frameworks etc from CM repo
     Rebuilt everything
