@@ -164,34 +164,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/cyanogen/prebuilt/common/etc/apns-conf.xml:system/etc/apns-conf.xml
 
-ifdef INSTALL_GAPPS
-# for this to work extract gapps-gb-20110120-signed.zip to gapps directory and set INSTALL_GAPPS environment variable
-# copy google apps
-PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/gapps/app/CarHomeLauncher.apk:system/app/CarHomeLauncher.apk \
-    device/samsung/galaxytab/gapps/app/FOTAKill.apk:system/app/FOTAKill.apk \
-    device/samsung/galaxytab/gapps/app/GenieWidget.apk:system/app/GenieWidget.apk \
-    device/samsung/galaxytab/gapps/app/GoogleBackupTransport.apk:system/app/GoogleBackupTransport.apk \
-    device/samsung/galaxytab/gapps/app/GoogleCalendarSyncAdapter.apk:system/app/GoogleCalendarSyncAdapter.apk \
-    device/samsung/galaxytab/gapps/app/GoogleContactsSyncAdapter.apk:system/app/GoogleContactsSyncAdapter.apk \
-    device/samsung/galaxytab/gapps/app/GoogleFeedback.apk:system/app/GoogleFeedback.apk \
-    device/samsung/galaxytab/gapps/app/GooglePartnerSetup.apk:system/app/GooglePartnerSetup.apk \
-    device/samsung/galaxytab/gapps/app/GoogleQuickSearchBox.apk:system/app/GoogleQuickSearchBox.apk \
-    device/samsung/galaxytab/gapps/app/GoogleServicesFramework.apk:system/app/GoogleServicesFramework.apk \
-    device/samsung/galaxytab/gapps/app/LatinImeTutorial.apk:system/app/LatinImeTutorial.apk \
-    device/samsung/galaxytab/gapps/app/MarketUpdater.apk:system/app/MarketUpdater.apk \
-    device/samsung/galaxytab/gapps/app/MediaUploader.apk:system/app/MediaUploader.apk \
-    device/samsung/galaxytab/gapps/app/NetworkLocation.apk:system/app/NetworkLocation.apk \
-    device/samsung/galaxytab/gapps/app/OneTimeInitializer.apk:system/app/OneTimeInitializer.apk \
-    device/samsung/galaxytab/gapps/app/SetupWizard.apk:system/app/SetupWizard.apk \
-    device/samsung/galaxytab/gapps/app/Talk.apk:system/app/Talk.apk \
-    device/samsung/galaxytab/gapps/app/Vending.apk:system/app/Vending.apk \
-    device/samsung/galaxytab/gapps/etc/permissions/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml \
-    device/samsung/galaxytab/gapps/etc/permissions/features.xml:system/etc/permissions/features.xml \
-    device/samsung/galaxytab/gapps/framework/com.google.android.maps.jar:system/framework/com.google.android.maps.jar \
-    device/samsung/galaxytab/gapps/lib/libvoicesearch.so:system/lib/libvoicesearch.so
-endif
-
 # These are the OpenMAX IL modules
 PRODUCT_PACKAGES += \
     libSEC_OMX_Core \
@@ -199,7 +171,6 @@ PRODUCT_PACKAGES += \
     libOMX.SEC.M4V.Decoder \
     libOMX.SEC.M4V.Encoder \
     libOMX.SEC.AVC.Encoder
-
 
 # Misc other modules
 #    copybit.s5pc110 \

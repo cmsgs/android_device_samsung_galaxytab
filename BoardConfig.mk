@@ -66,8 +66,9 @@ BOARD_V4L2_DEVICE := /dev/video1
 BOARD_CAMERA_DEVICE := /dev/video0
 BOARD_SECOND_CAMERA_DEVICE := /dev/video2
 
+# for pre .35 kernel usb mass storage switching
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun"
 # For the FM Radio
 BOARD_HAVE_FM_RADIO := false
 
