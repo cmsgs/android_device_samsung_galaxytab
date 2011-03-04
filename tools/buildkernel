@@ -23,4 +23,6 @@ KERNEL_BUILD
 cd ${HERE}
 
 cp -v ${DEPTH}/kernel-galaxytab/arch/arm/boot/zImage .
+cp -v zImage ../kernel
+
 

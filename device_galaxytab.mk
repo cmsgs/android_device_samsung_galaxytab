@@ -113,11 +113,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/initramfs/recovery.rc:root/recovery.rc \
     device/samsung/galaxytab/initramfs/ueventd.rc:root/ueventd.rc
 
-# prebuilt zImage
-#PRODUCT_COPY_FILES += \
-#    kernel-galaxytab/arch/arm/boot/zImage:zImage
-
-# this is not a real kernel, just empty file, but it is needed so recovery is copied to out/root
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/samsung/galaxytab/kernel
 else
@@ -155,7 +150,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/galaxytab/prebuilt/lib/modules/storage.ko:root/lib/modules/storage.ko \
     device/samsung/galaxytab/prebuilt/lib/modules/param.ko:root/lib/modules/param.ko
 
-
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
     device/samsung/common/sec_mm/sec_omx/sec_omx_core/secomxregistry:system/etc/secomxregistry
@@ -188,7 +182,7 @@ PRODUCT_PACKAGES += \
 $(call inherit-product, build/target/product/full.mk)
 
 PRODUCT_NAME := full_galaxytab
-PRODUCT_DEVICE := GT-P1000
+PRODUCT_DEVICE := galaxytab
 PRODUCT_MODEL := GT-P1000
 PRODUCT_BOARD := p1
 PRODUCT_BRAND := Samsung
