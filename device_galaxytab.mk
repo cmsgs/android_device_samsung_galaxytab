@@ -84,7 +84,7 @@ $(call inherit-product, device/samsung/galaxytab/media_a1026.mk)
 
 # media config xml file
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml
 
 # additional postinit scripts
 PRODUCT_COPY_FILES += \
@@ -101,20 +101,21 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.distinct.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.distinct.xml
 
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/samsung/galaxytab/prebuilt/etc/asound.conf:system/etc/asound.conf \
-    device/samsung/galaxytab/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
-    device/samsung/galaxytab/prebuilt/usr/keylayout/p1_keyboard.kl:system/usr/keylayout/p1_keyboard.kl
+    $(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/prebuilt/etc/asound.conf:system/etc/asound.conf \
+    $(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab \
+    $(LOCAL_PATH)/prebuilt/usr/keylayout/p1_keyboard.kl:system/usr/keylayout/p1_keyboard.kl
 
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/initramfs/init.smdkc110.rc:root/init.smdkc110.rc \
-    device/samsung/galaxytab/initramfs/init.rc:root/init.rc \
-    device/samsung/galaxytab/initramfs/lpm.rc:root/lpm.rc \
-    device/samsung/galaxytab/initramfs/recovery.rc:root/recovery.rc \
-    device/samsung/galaxytab/initramfs/ueventd.rc:root/ueventd.rc
+    $(LOCAL_PATH)/initramfs/init.smdkc110.rc:root/init.smdkc110.rc \
+    $(LOCAL_PATH)/initramfs/init.rc:root/init.rc \
+    $(LOCAL_PATH)/initramfs/lpm.rc:root/lpm.rc \
+    $(LOCAL_PATH)/initramfs/recovery.rc:root/recovery.rc \
+    $(LOCAL_PATH)/initramfs/recovery.fstab:root/misc/recovery.fstab \
+    $(LOCAL_PATH)/initramfs/ueventd.rc:root/ueventd.rc
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/samsung/galaxytab/kernel
+LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -142,13 +143,13 @@ PRODUCT_COPY_FILES += \
 
 # binary kernel modules we dont have sources for
 PRODUCT_COPY_FILES += \
-    device/samsung/galaxytab/prebuilt/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/j4fs.ko:root/lib/modules/j4fs.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/storage.ko:root/lib/modules/storage.ko \
-    device/samsung/galaxytab/prebuilt/lib/modules/param.ko:root/lib/modules/param.ko
+    $(LOCAL_PATH)/prebuilt/lib/modules/fsr.ko:root/lib/modules/fsr.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/j4fs.ko:root/lib/modules/j4fs.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/storage.ko:root/lib/modules/storage.ko \
+    $(LOCAL_PATH)/prebuilt/lib/modules/param.ko:root/lib/modules/param.ko
 
 # These are the OpenMAX IL configuration files
 PRODUCT_COPY_FILES += \
@@ -171,8 +172,9 @@ PRODUCT_PACKAGES += \
 #    overlay.s5pc110 \
 
 PRODUCT_PACKAGES += \
-    lights.s5pc110 \
-    sensors.s5pc110 \
+    overlay.galaxytab \
+    lights.galaxytab \
+    sensors.galaxytab \
     akmd \
     sec_mm \
     libs3cjpeg \

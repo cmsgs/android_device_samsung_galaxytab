@@ -27,6 +27,7 @@
 -include vendor/samsung/GT-P1000/BoardConfigVendor.mk
 
 TARGET_NO_BOOTLOADER := true
+TARGET_BOOTLOADER_BOARD_NAME := galaxytab
 TARGET_NO_KERNEL := true
 TARGET_NO_RECOVERY := true
 # it creates partition that is not mountable as ext4, wtf?
@@ -54,8 +55,8 @@ BOARD_NO_RGBX_8888 := true
 
 BOARD_USES_FROYO_GRALLOC := true
 BOARD_USES_NEXUS_S_LIBS := true
-BOARD_USES_OVERLAY := false
-BOARD_USES_COPYBIT := true
+BOARD_USES_OVERLAY := true
+BOARD_USES_COPYBIT := false
 BOARD_USES_GALAXYS_INIT := true
 
 USE_CAMERA_STUB := false

@@ -41,8 +41,8 @@ loglevel 9
     insmod /lib/modules/modemctl.ko
     insmod /lib/modules/bthid.ko
 
+    symlink /misc /etc
 # Backward compatibility
-    symlink /system/etc /etc
     symlink /sys/kernel/debug /d
 
 # Interface for Wifi
